@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none">
+  <defs>
+    <clipPath id="favicon-clip">
+      <rect width="64" height="64" rx="14" />
+    </clipPath>
+  </defs>
+  <g clip-path="url(#favicon-clip)">
+    <image
+      href="Untitled%20design%20%282%29.svg"
+      x="-9"
+      y="-9"
+      width="82"
+      height="82"
+      preserveAspectRatio="xMidYMid slice"
+    />
+  </g>
+</svg>

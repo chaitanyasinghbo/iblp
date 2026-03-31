@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Ocean Education — Admissions to the World's Leading Universities</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&amp;family=Inter:wght@300;400;500;600;700;800&amp;family=Montserrat:wght@600;700;800&amp;display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy:   #0B1C30;
+            --navy2:  #132438;
+            --blue:   #1D5DB8;
+            --gold:   #B8892A;
+            --bg:     #F7F6F3;
+            --bg2:    #EEECEA;
+            --text:   #0F172A;
+            --mid:    #5A6375;
+            --light:  #9AA2B0;
+            --border: #E0DDD8;
+            --white:  #FFFFFF;
+            --r:      14px;
+        }
+
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; color: var(--text); background: var(--white); overflow-x: hidden; }
+
+        /* ── NAVBAR ─────────────────────────────────── */
+        .nav {
+            position: fixed; top: 0; left: 0; right: 0; z-index: 900;
+            height: 62px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 44px;
+            background: rgba(11,28,48,0.97);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+        .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+        .nav-mark {
+            width: 54px; height: 54px; flex-shrink: 0;
+            display: flex; align-items: center; justify-content: center;
+            overflow: hidden;
+        }
+        .nav-mark img {
+            width: 178%;
+            height: 178%;
+            max-width: none;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            transform: translateY(-1px);
+            filter: drop-shadow(0 5px 14px rgba(8,28,58,0.24));
+        }
+        .nav-name { color: white; font-size: 14px; font-weight: 600; line-height: 1; }
+        .nav-sub  { color: rgba(255,255,255,0.45); font-size: 10px; font-weight: 400; letter-spacing: 0.07em; text-transform: uppercase; margin-top: 2px; }
+        .nav-btn {
+            padding: 9px 20px; border-radius: 7px;
+            background: transparent; border: 1px solid rgba(255,255,255,0.25);
+            color: white; font-size: 13px; font-weight: 600;
+            cursor: pointer; text-decoration: none; display: inline-block;
+            transition: border-color 0.2s, background 0.2s;
+        }
+        .nav-btn:hover { border-color: white; background: rgba(255,255,255,0.07); }
+
+        /* ── HERO ────────────────────────────────────── */
+        .hero {
+            min-height: clamp(720px, 88vh, 860px); padding-top: 62px;
+            background: var(--navy);
+            display: flex; flex-direction: column; justify-content: center;
+            position: relative; overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background-image:
+                linear-gradient(90deg, rgba(6,16,30,0.72) 0%, rgba(7,18,32,0.56) 32%, rgba(8,20,36,0.28) 64%, rgba(8,20,36,0.34) 100%),
+                linear-gradient(180deg, rgba(7,18,32,0.34) 0%, rgba(9,24,44,0.42) 36%, rgba(9,24,44,0.56) 100%),
+                radial-gradient(ellipse 55% 55% at 76% 88%, rgba(29,93,184,0.18) 0%, transparent 60%),
+                radial-gradient(ellipse 42% 42% at 6% 18%, rgba(29,93,184,0.1) 0%, transparent 60%),
+                url("698172-2560x1369-desktop-hd-harvard-university-background.jpg");
+            background-position: center, center, 76% 88%, 6% 18%, 58% 56%;
+            background-size: cover, cover, auto, auto, cover;
+            background-repeat: no-repeat, no-repeat, no-repeat, no-repeat, no-repeat;
+            transform: scale(1.02);
+        }
+        /* subtle grain */
+        .hero::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 1;
+            background-image:
+                linear-gradient(180deg, rgba(255,255,255,0.03) 0%, rgba(255,255,255,0) 18%, rgba(3,10,20,0.08) 100%),
+                url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+            background-size: auto, 180px;
+            background-repeat: no-repeat, repeat;
+        }
+        .hero-inner {
+            position: relative; z-index: 2;
+            max-width: 1160px; margin: 0 auto; width: 100%;
+            padding: 64px 44px 44px;
+            display: grid; grid-template-columns: 1fr 400px; gap: 52px; align-items: center;
+        }
+        .hero-copy {
+            padding: 24px 26px 22px;
+            border-radius: 24px;
+            background: linear-gradient(135deg, rgba(6,16,30,0.58) 0%, rgba(6,16,30,0.3) 100%);
+            border: 1px solid rgba(255,255,255,0.08);
+            box-shadow: 0 18px 48px rgba(3,10,20,0.16);
+            backdrop-filter: blur(10px);
+        }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
+            color: rgba(255,255,255,0.68); margin-bottom: 18px;
+        }
+        .hero-eyebrow-line { width: 28px; height: 1px; background: rgba(255,255,255,0.46); }
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(34px, 4.5vw, 58px); font-weight: 700;
+            color: white; line-height: 1.06; margin-bottom: 16px;
+            text-shadow: 0 8px 28px rgba(3,10,20,0.22);
+        }
+        .hero h1 em { font-style: italic; color: #7DC1E8; }
+        .hero-sub {
+            font-size: 14px; color: rgba(255,255,255,0.8);
+            line-height: 1.6; max-width: 410px; margin-bottom: 28px;
+        }
+        .hero-metrics { display: flex; gap: 28px; flex-wrap: wrap; }
+        .hm { display: flex; flex-direction: column; }
+        .hm-n { font-size: 28px; font-weight: 800; color: white; line-height: 1; }
+        .hm-n span { color: #7DC1E8; }
+        .hm-l { font-size: 11px; color: rgba(255,255,255,0.64); margin-top: 5px; font-weight: 500; line-height: 1.4; }
+        .hm-divider { width: 1px; background: rgba(255,255,255,0.18); align-self: stretch; }
+
+        /* ── FORM CARD ───────────────────────────────── */
+        .form-card {
+            background: white; border-radius: var(--r);
+            padding: 32px 28px;
+            box-shadow: 0 24px 72px rgba(0,0,0,0.28), 0 2px 8px rgba(0,0,0,0.12);
+            position: relative;
+        }
+        .form-card::before {
+            content: ''; position: absolute; top: 0; left: 28px; right: 28px; height: 2px;
+            background: linear-gradient(90deg, var(--blue), #5B9FE8);
+            border-radius: 0 0 2px 2px;
+        }
+        .form-step { display: none; }
+        .form-step.active { display: block; }
+        .ft { font-family: 'Cormorant Garamond', serif; font-size: 20px; font-weight: 700; color: var(--navy); margin-bottom: 6px; line-height: 1.2; }
+        .ft-sans { font-family: 'Inter', sans-serif; font-size: 18px; letter-spacing: -0.01em; }
+        .fs { font-size: 12.5px; color: var(--mid); line-height: 1.6; margin-bottom: 22px; }
+        .tog { display: flex; gap: 6px; margin-bottom: 18px; }
+        .tog-btn {
+            flex: 1; padding: 9px 8px; border-radius: 7px;
+            border: 1px solid var(--border);
+            background: white; font-size: 12.5px; font-weight: 600;
+            color: var(--mid); cursor: pointer; transition: all 0.18s;
+        }
+        .tog-btn.on { background: #EEF4FD; border-color: var(--blue); color: var(--blue); }
+        .fg { margin-bottom: 14px; }
+        .fl {
+            display: block; font-size: 10.5px; font-weight: 700;
+            letter-spacing: 0.07em; text-transform: uppercase;
+            color: var(--text); margin-bottom: 6px;
+        }
+        .fi {
+            width: 100%; padding: 11px 13px;
+            border: 1px solid var(--border); border-radius: 8px;
+            font-size: 13.5px; font-family: 'Inter', sans-serif;
+            color: var(--text); background: white; outline: none;
+            transition: border-color 0.18s, box-shadow 0.18s;
+        }
+        .fi:focus { border-color: var(--blue); box-shadow: 0 0 0 3px rgba(29,93,184,0.08); }
+        select.fi {
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%236B7280' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+            background-repeat: no-repeat; background-position: right 12px center; padding-right: 32px;
+        }
+        .phone-row { display: flex; gap: 8px; }
+        .phone-pfx {
+            display: flex; align-items: center; gap: 5px;
+            padding: 11px 12px; border: 1px solid var(--border); border-radius: 8px;
+            font-size: 13.5px; font-weight: 600; color: var(--text);
+            background: #FAFAF8; white-space: nowrap; cursor: default;
+        }
+        .btn-p {
+            width: 100%; padding: 13px;
+            background: var(--navy); color: white; border: none;
+            border-radius: 8px; font-size: 14px; font-weight: 700;
+            cursor: pointer; transition: background 0.2s, transform 0.15s;
+            margin-top: 6px; letter-spacing: 0.01em;
+        }
+        .btn-p:hover { background: #162C4A; transform: translateY(-1px); }
+        .btn-b {
+            padding: 12px 18px; background: white;
+            border: 1px solid var(--border); border-radius: 8px;
+            font-size: 13px; font-weight: 600; color: var(--mid);
+            cursor: pointer; transition: border-color 0.18s;
+        }
+        .btn-b:hover { border-color: var(--text); color: var(--text); }
+        .form-row-btns { display: flex; gap: 8px; margin-top: 6px; }
+        .form-row-btns .btn-p { flex: 1; margin-top: 0; }
+        .form-priv { font-size: 10.5px; color: var(--light); line-height: 1.55; margin-top: 11px; }
+        .form-priv a { color: var(--blue); text-decoration: none; }
+        .dots { display: flex; justify-content: center; gap: 5px; margin-top: 16px; }
+        .dot { height: 3px; border-radius: 2px; background: var(--border); transition: all 0.3s; }
+        .dot.on { background: var(--navy); width: 20px; }
+        .dot:not(.on) { width: 10px; }
+        .form-success { display: none; text-align: center; padding: 16px 8px; }
+        .form-success.show { display: block; }
+        .success-check { width: 52px; height: 52px; border-radius: 50%; background: #EEF4FD; margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+        .form-success h3 { font-size: 18px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+        .form-success p { font-size: 13px; color: var(--mid); line-height: 1.6; }
+
+        /* ── TICKER ──────────────────────────────────── */
+        .ticker-wrap { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 13px 0; overflow: hidden; }
+        .ticker-inner { display: flex; gap: 0; width: max-content; animation: tick 40s linear infinite; }
+        .ticker-inner:hover { animation-play-state: paused; }
+        @keyframes tick { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+        .ti { display: flex; align-items: center; gap: 9px; padding: 0 28px; white-space: nowrap; }
+        .ti-n { font-size: 13px; font-weight: 700; color: var(--text); }
+        .ti-c { font-size: 14px; font-weight: 800; color: var(--blue); }
+        .ti-sep { width: 4px; height: 4px; border-radius: 50%; background: var(--border); flex-shrink: 0; }
+
+        /* ── GENERIC SECTION ─────────────────────────── */
+        .section { padding: 96px 44px; }
+        .wrap { max-width: 1160px; margin: 0 auto; }
+        .sec-tag { font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--blue); margin-bottom: 14px; display: block; }
+        .sec-h {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(26px, 3.5vw, 44px); font-weight: 700;
+            color: var(--navy); line-height: 1.15; margin-bottom: 18px;
+        }
+        .sec-b { font-size: 15px; color: var(--mid); line-height: 1.8; max-width: 540px; }
+
+        /* ── BEYOND TRANSCRIPT ───────────────────────── */
+        .context-section {
+            background: linear-gradient(180deg, #FFFFFF 0%, #F7F9FC 100%);
+        }
+        .context-section .sec-b { max-width: 58ch; }
+        .bt-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .bt-list { list-style: none; margin-top: 28px; display: flex; flex-direction: column; gap: 13px; }
+        .bt-list li { display: flex; align-items: flex-start; gap: 12px; font-size: 14.5px; color: var(--text); line-height: 1.45; }
+        .bt-list li .ic { width: 18px; height: 18px; border-radius: 50%; background: #EEF4FD; color: var(--blue); font-size: 9px; font-weight: 800; display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .bt-img {
+            width: 100%; aspect-ratio: 4/5; border-radius: 18px; overflow: hidden;
+            border: 1px solid rgba(11,28,48,0.08);
+            box-shadow: 0 26px 58px rgba(11,28,48,0.12);
+            background: linear-gradient(150deg, #0B1C30 0%, #1D5DB8 60%, #0B3070 100%);
+            position: relative;
+        }
+        .bt-img::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(11,28,48,0.04) 0%, rgba(11,28,48,0.18) 100%);
+            pointer-events: none;
+        }
+        .bt-img > * {
+            position: relative;
+            z-index: 1;
+        }
+        .bt-img img { width: 100%; height: 100%; object-fit: cover; object-position: top center; }
+        .bt-img-ph { width: 100%; height: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; color: rgba(255,255,255,0.25); font-size: 12px; text-align: center; padding: 20px; gap: 10px; }
+        .img-badge {
+            position: absolute; bottom: 20px; left: 20px;
+            background: rgba(255,255,255,0.94); border-radius: 10px; padding: 14px 17px;
+            box-shadow: 0 12px 32px rgba(11,28,48,0.15);
+            backdrop-filter: blur(10px);
+        }
+        .img-badge-n { font-size: 26px; font-weight: 800; color: var(--navy); line-height: 1; }
+        .img-badge-t { font-size: 10.5px; color: var(--mid); margin-top: 3px; }
+
+        /* ── RESULTS ─────────────────────────────────── */
+        .results-section {
+            background:
+                radial-gradient(circle at 88% 16%, rgba(29,93,184,0.08), transparent 24%),
+                radial-gradient(circle at 12% 22%, rgba(11,28,48,0.05), transparent 28%),
+                linear-gradient(180deg, #F7F6F3 0%, #F7FAFD 100%);
+            color: var(--text);
+            border-top: 1px solid rgba(11,28,48,0.06);
+            border-bottom: 1px solid rgba(11,28,48,0.06);
+        }
+        .results-head {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 640px;
+            margin-bottom: 22px;
+            padding-top: 2px;
+        }
+        .results-head::after {
+            content: '';
+            position: absolute;
+            top: -4px;
+            right: -120px;
+            width: 180px;
+            height: 112px;
+            background:
+                linear-gradient(180deg, transparent 0 18%, rgba(29,93,184,0.12) 18% 24%, transparent 24%),
+                linear-gradient(180deg, transparent 0 32%, rgba(29,93,184,0.08) 32% 84%, transparent 84%),
+                repeating-linear-gradient(90deg, transparent 0 12%, rgba(11,28,48,0.08) 12% 15%, transparent 15% 22%);
+            opacity: 0.24;
+            pointer-events: none;
+        }
+        .res-eyebrow {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 17px;
+            font-style: italic;
+            color: #9A2017;
+            margin-bottom: 8px;
+        }
+        .res-h {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(32px, 4.1vw, 50px);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            color: var(--navy);
+            max-width: 11.5ch;
+            margin-bottom: 10px;
+        }
+        .res-copy {
+            font-size: 13px;
+            line-height: 1.6;
+            color: var(--mid);
+            max-width: 40ch;
+        }
+        .results-board {
+            display: grid;
+            grid-template-columns: minmax(300px, 315px) minmax(230px, 280px) minmax(420px, 1fr);
+            grid-template-areas: "feature stack panel";
+            gap: 20px;
+            align-items: stretch;
+        }
+        .results-card {
+            border-radius: 22px;
+            border: 1px solid rgba(22,34,53,0.08);
+            background: rgba(255,255,255,0.96);
+            box-shadow: 0 18px 44px rgba(11,28,48,0.08);
+        }
+        .feature-card {
+            grid-area: feature;
+            position: relative;
+            overflow: hidden;
+            min-height: 424px;
+            padding: 16px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            background: #14253B;
+        }
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(6,16,30,0.82) 0%, rgba(6,16,30,0.5) 22%, rgba(6,16,30,0.1) 46%, rgba(6,16,30,0.14) 60%, rgba(6,16,30,0.62) 82%, rgba(6,16,30,0.94) 100%);
+            pointer-events: none;
+        }
+        .feature-card::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 14%),
+                radial-gradient(circle at 22% 18%, rgba(255,255,255,0.12) 0%, transparent 34%);
+            pointer-events: none;
+        }
+        .feature-card > * {
+            position: relative;
+            z-index: 1;
+        }
+        .feature-top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: flex-start;
+            max-width: none;
+        }
+        .feature-copy-block {
+            width: min(100%, 224px);
+            padding: 14px 14px 14px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(7,18,32,0.74) 0%, rgba(7,18,32,0.58) 100%);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 14px 30px rgba(6,16,30,0.18);
+            backdrop-filter: blur(10px);
+            transition: opacity 0.24s ease, transform 0.32s ease;
+        }
+        .feature-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 31px;
+            color: white;
+            line-height: 0.98;
+            margin-bottom: 10px;
+        }
+        .feature-meta {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 10px;
+            border-radius: 999px;
+            background: rgba(255,255,255,0.94);
+            color: #22354D;
+            font-size: 10.5px;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 100%;
+        }
+        .feature-img {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center top;
+            filter: saturate(0.94) contrast(1.02);
+            transition: opacity 0.26s ease, transform 0.4s ease;
+        }
+        .feature-fallback {
+            position: absolute;
+            inset: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: rgba(255,255,255,0.45);
+            background: linear-gradient(180deg, rgba(20,37,59,0.8) 0%, rgba(20,37,59,0.95) 100%);
+        }
+        .feature-bottom {
+            margin-top: auto;
+            color: white;
+            max-width: 100%;
+            padding: 16px 16px 14px;
+            border-radius: 18px;
+            background: linear-gradient(180deg, rgba(7,18,32,0.78) 0%, rgba(7,18,32,0.94) 100%);
+            border: 1px solid rgba(255,255,255,0.12);
+            box-shadow: 0 16px 32px rgba(6,16,30,0.18);
+            backdrop-filter: blur(10px);
+            transition: opacity 0.24s ease, transform 0.32s ease;
+        }
+        .feature-number {
+            font-size: clamp(48px, 5vw, 66px);
+            font-weight: 800;
+            line-height: 0.92;
+            letter-spacing: -0.05em;
+            margin-bottom: 6px;
+        }
+        .feature-copy {
+            font-size: 13px;
+            line-height: 1.5;
+            color: rgba(255,255,255,0.92);
+            max-width: 24ch;
+        }
+        .feature-card.is-switching .feature-img {
+            opacity: 0.28;
+            transform: scale(1.02);
+        }
+        .feature-card.is-switching .feature-copy-block,
+        .feature-card.is-switching .feature-bottom {
+            opacity: 0.55;
+            transform: translateY(4px);
+        }
+        .results-stack {
+            grid-area: stack;
+            display: grid;
+            grid-template-rows: minmax(278px, 1.2fr) minmax(168px, 0.86fr);
+            gap: 20px;
+        }
+        .stat-card {
+            padding: 20px 20px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            min-height: 206px;
+        }
+        .stat-kicker {
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #6A7C96;
+            margin-bottom: 6px;
+        }
+        .stat-number {
+            font-size: clamp(56px, 5.8vw, 80px);
+            font-weight: 800;
+            line-height: 0.9;
+            letter-spacing: -0.05em;
+            color: #1B365A;
+            margin-bottom: 8px;
+            font-variant-numeric: tabular-nums;
+        }
+        .stat-card p {
+            font-size: 12.25px;
+            line-height: 1.6;
+            color: #5F6673;
+            max-width: 24ch;
+        }
+        .results-panel {
+            grid-area: panel;
+            padding: 22px 22px 18px;
+            display: flex;
+            flex-direction: column;
+            background: rgba(255,255,255,0.98);
+        }
+        .results-panel-head {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 18px;
+        }
+        .results-panel-title {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 4px;
+        }
+        .results-panel-copy {
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: var(--mid);
+            max-width: 38ch;
+        }
+        .chart-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 14px;
+            align-items: center;
+        }
+        .cl {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 10.5px;
+            color: #6A7C96;
+            font-weight: 600;
+        }
+        .cl-swatch {
+            width: 22px;
+            height: 6px;
+            border-radius: 999px;
+        }
+        .cl-swatch.gen { background: #C8C7C4; }
+        .cl-swatch.boe { background: linear-gradient(90deg, #2C5EA9, #76AEE0); }
+        .results-chart-grid { display: grid; grid-template-columns: 1fr; gap: 0; }
+        .results-chart-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .bi {
+            padding-bottom: 10px;
+            border-bottom: 1px solid rgba(22,34,53,0.08);
+        }
+        .bi:last-child {
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .bi-head {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+        .bi-lbl {
+            font-size: 12.75px;
+            font-weight: 700;
+            color: var(--navy);
+        }
+        .bi-multiple {
+            font-size: 10px;
+            color: var(--blue);
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            white-space: nowrap;
+        }
+        .bi-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 5px;
+        }
+        .bi-row:last-child { margin-bottom: 0; }
+        .bi-track {
+            flex: 1;
+            background: rgba(33,50,74,0.06);
+            border-radius: 999px;
+            overflow: hidden;
+        }
+        .bi-track.gen-t { height: 6px; }
+        .bi-track.boe-t { height: 10px; }
+        .bi-fill {
+            height: 100%;
+            border-radius: 999px;
+            transition: width 1.3s cubic-bezier(0.16,1,0.3,1);
+        }
+        .bi-fill.gen { background: #CBC8C4; width: 0; }
+        .bi-fill.boe { background: linear-gradient(90deg, #2C5EA9, #76AEE0); width: 0; }
+        .bi-pct {
+            font-size: 10.25px;
+            min-width: 36px;
+            text-align: right;
+            white-space: nowrap;
+            font-weight: 600;
+        }
+        .bi-pct.gen-p { color: #8A8D92; }
+        .bi-pct.boe-p { color: #1F4E90; }
+        .results-footnote {
+            margin-top: 16px;
+            font-size: 9.75px;
+            line-height: 1.5;
+            color: #7A8798;
+        }
+
+        /* ── STUDENT CARDS ───────────────────────────── */
+        .cards-section { background: var(--bg); }
+        .cards-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 28px; flex-wrap: wrap; gap: 16px; }
+        .cards-intro {
+            margin-top: 12px;
+            max-width: 60ch;
+            font-size: 13px;
+            line-height: 1.65;
+            color: var(--mid);
+        }
+        .scroll-btns { display: flex; gap: 8px; }
+        .scr-btn { width: 38px; height: 38px; border-radius: 50%; border: 1px solid var(--border); background: white; cursor: pointer; font-size: 15px; transition: all 0.18s; display: flex; align-items: center; justify-content: center; }
+        .scr-btn:hover { border-color: var(--navy); background: var(--navy); color: white; }
+        .cards-outer { position: relative; }
+        .cards-outer::before, .cards-outer::after { content: ''; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
+        .cards-outer::before { left: 0; background: linear-gradient(to right, var(--bg), transparent); }
+        .cards-outer::after  { right: 0; background: linear-gradient(to left, var(--bg), transparent); }
+        .cards-scroll { display: flex; gap: 16px; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding: 8px 4px 20px; }
+        .cards-scroll::-webkit-scrollbar { display: none; }
+        .sc {
+            background: rgba(255,255,255,0.98); border-radius: 18px; padding: 20px 18px 18px;
+            min-width: min(320px, calc(100vw - 56px));
+            max-width: min(320px, calc(100vw - 56px));
+            min-height: 258px;
+            flex-shrink: 0;
+            border: 1px solid rgba(11,28,48,0.08);
+            scroll-snap-align: start;
+            box-shadow: 0 12px 30px rgba(11,28,48,0.06);
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+        }
+        .sc:hover {
+            transform: translateY(-2px);
+            border-color: rgba(11,28,48,0.14);
+            box-shadow: 0 16px 34px rgba(11,28,48,0.08);
+        }
+        .sc-stars {
+            font-size: 12px;
+            letter-spacing: 0.18em;
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+        .sc-school {
+            font-size: 15px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.3;
+            margin-bottom: 6px;
+        }
+        .sc-name {
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #6A7C96;
+            margin-bottom: 14px;
+        }
+        .sc-note {
+            flex: 1;
+            font-size: 12.75px;
+            color: #4F5B6A;
+            line-height: 1.72;
+        }
+        .sc-foot {
+            margin-top: 14px;
+            padding-top: 12px;
+            border-top: 1px solid rgba(11,28,48,0.08);
+            font-size: 11px;
+            color: #6A7C96;
+            line-height: 1.5;
+        }
+        .sc-foot strong {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        /* ── APPROACH SECTION ────────────────────────── */
+        .approach-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+        .ap-img { width: 100%; aspect-ratio: 3/4; border-radius: 18px; overflow: hidden; background: linear-gradient(150deg, #D8E8F4 0%, #C0D8EE 60%, #A8C8E4 100%); display: flex; align-items: center; justify-content: center; }
+        .ap-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center 12%;
+            transform: scale(1.06);
+            transform-origin: center top;
+        }
+        .ap-img-ph { color: #A0B8CC; font-size: 12px; text-align: center; padding: 20px; }
+        .pillars { margin-top: 30px; display: flex; flex-direction: column; gap: 22px; }
+        .pillar { display: flex; gap: 16px; }
+        .p-num { font-size: 26px; font-weight: 800; color: rgba(29,93,184,0.15); font-family: 'Cormorant Garamond', serif; line-height: 1; min-width: 28px; }
+        .p-title { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 4px; }
+        .p-body  { font-size: 13px; color: var(--mid); line-height: 1.65; }
+
+        /* ── CTA SECTION ─────────────────────────────── */
+        .cta-bg { background: var(--bg); }
+        .cta-grid { display: grid; grid-template-columns: 1fr 420px; gap: 60px; align-items: start; }
+        .cta-items { margin-top: 28px; display: flex; flex-direction: column; gap: 20px; }
+        .ci { display: flex; align-items: flex-start; gap: 12px; }
+        .ci-n {
+            width: 28px;
+            height: 28px;
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 999px;
+            border: 1px solid rgba(11,28,48,0.12);
+            background: rgba(255,255,255,0.82);
+            font-size: 10.5px;
+            font-weight: 700;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: 0.08em;
+            color: #5A6375;
+            line-height: 1;
+        }
+        .ci-title {
+            font-size: 13.5px;
+            font-weight: 500;
+            color: #566172;
+            line-height: 1.65;
+            max-width: 36ch;
+        }
+        .ci-body  { font-size: 13px; color: var(--mid); margin-top: 3px; line-height: 1.6; }
+
+        /* ── FOOTER ──────────────────────────────────── */
+        footer {
+            background: var(--navy); padding: 28px 44px;
+            display: flex; align-items: center; justify-content: space-between;
+            flex-wrap: wrap; gap: 16px;
+            border-top: 1px solid rgba(255,255,255,0.06);
+        }
+        footer, footer a { font-size: 12px; color: rgba(255,255,255,0.4); text-decoration: none; }
+        footer a:hover { color: rgba(255,255,255,0.7); }
+        .f-links { display: flex; gap: 20px; flex-wrap: wrap; }
+        .f-disc { font-size: 10.5px; color: rgba(255,255,255,0.25); max-width: 400px; line-height: 1.5; }
+
+        /* ── STICKY BAR ──────────────────────────────── */
+        .sticky {
+            position: fixed; bottom: 0; left: 0; right: 0; z-index: 800;
+            background: white; border-top: 1px solid var(--border);
+            padding: 11px 24px;
+            display: flex; align-items: center; justify-content: space-between;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.08);
+            transform: translateY(100%);
+            transition: transform 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .sticky.up { transform: translateY(0); }
+        .sticky-txt { font-size: 13.5px; font-weight: 600; color: var(--navy); }
+        .sticky-txt span { color: var(--blue); }
+        .sticky-btn { background: var(--navy); color: white; border: none; padding: 10px 26px; border-radius: 7px; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: background 0.18s; white-space: nowrap; }
+        .sticky-btn:hover { background: #162C4A; }
+
+        /* ── ANIMATIONS ──────────────────────────────── */
+        .fade { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+        .fade.in { opacity: 1; transform: none; }
+
+        /* ── RESPONSIVE ──────────────────────────────── */
+        @media (max-width: 1180px) and (min-width: 961px) {
+            .results-board {
+                grid-template-columns: minmax(290px, 320px) minmax(0, 1fr);
+                grid-template-areas:
+                    "feature stack"
+                    "panel panel";
+                gap: 18px;
+            }
+            .results-stack {
+                grid-template-rows: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+            }
+            .stat-card {
+                min-height: 192px;
+                padding: 20px 18px 18px;
+            }
+            .stat-number { font-size: clamp(52px, 5.2vw, 72px); }
+            .stat-card p { max-width: 22ch; }
+            .results-panel { padding: 22px 20px 18px; }
+        }
+        @media (max-width: 960px) {
+            .hero-inner, .bt-grid, .approach-grid, .cta-grid { grid-template-columns: 1fr; gap: 40px; }
+            .results-board {
+                grid-template-columns: 1fr;
+                grid-template-areas:
+                    "feature"
+                    "stack"
+                    "panel";
+            }
+            .results-head::after { display: none; }
+            .results-stack {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-rows: auto;
+                gap: 14px;
+            }
+            .bt-img, .ap-img { order: -1; aspect-ratio: 16/9; }
+            .section { padding: 64px 24px; }
+            .nav { padding: 0 20px; }
+            .hero { min-height: auto; }
+            .hero-inner { padding: 48px 20px 36px; }
+            .hero-copy { padding: 20px 20px 18px; border-radius: 20px; }
+            footer { padding: 24px 20px; flex-direction: column; align-items: flex-start; }
+        }
+        @media (max-width: 620px) {
+            .hero h1 { font-size: 30px; }
+            .hero-eyebrow { margin-bottom: 14px; }
+            .hero-sub { font-size: 13px; line-height: 1.55; margin-bottom: 22px; max-width: 30ch; }
+            .hero-copy { padding: 18px 16px 16px; border-radius: 18px; }
+            .results-head { margin-bottom: 20px; }
+            .res-h { font-size: 34px; max-width: 12ch; }
+            .res-copy { font-size: 12px; max-width: 34ch; }
+            .results-board { gap: 12px; }
+            .results-stack {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                grid-template-rows: auto;
+                gap: 12px;
+            }
+            .feature-card {
+                min-height: 292px;
+                padding: 12px;
+            }
+            .feature-img { object-position: 62% top; }
+            .feature-copy-block { width: min(100%, 156px); padding: 8px 8px 9px; }
+            .feature-name { font-size: 18px; margin-bottom: 6px; }
+            .feature-meta { font-size: 8px; padding: 4px 7px; }
+            .feature-bottom { width: min(100%, 156px); max-width: 100%; padding: 7px 8px 8px; }
+            .feature-number { font-size: 26px; margin-bottom: 2px; }
+            .feature-copy { max-width: 16ch; font-size: 9px; line-height: 1.28; }
+            .stat-card {
+                min-height: 156px;
+                padding: 14px 12px 12px;
+            }
+            .stat-kicker { font-size: 8.5px; margin-bottom: 5px; }
+            .stat-number { font-size: 42px; margin-bottom: 6px; }
+            .stat-card p {
+                font-size: 10.5px;
+                line-height: 1.4;
+                max-width: 15ch;
+            }
+            .results-panel { padding: 18px 14px 16px; }
+            .results-panel-title { font-size: 15px; }
+            .results-panel-copy { font-size: 12px; }
+            .bi-lbl { font-size: 11.5px; }
+            .form-card { padding: 24px 18px; }
+            .hero-metrics { gap: 18px; }
+            .hm-n { font-size: 24px; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ── NAVBAR ── -->
+<nav class="nav">
+    <a href="#" class="nav-logo">
+        <div class="nav-mark" aria-hidden="true"><img src="Untitled%20design%20%281%29.svg" alt=""></div>
+        <div>
+            <div class="nav-name">Blue Ocean Education</div>
+            <div class="nav-sub">University Admissions Consulting</div>
+        </div>
+    </a>
+    <a href="#consult" class="nav-btn">Book Now!</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+    <div class="hero-inner">
+        <div class="fade hero-copy">
+            <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div>Boutique Admissions Consulting · India</div>
+            <h1>Admission to the World's <em>Most Selective</em> Universities</h1>
+            <p class="hero-sub">
+                Blue Ocean advises Indian applicants targeting the Ivy League and other highly selective universities across the US, UK, Canada, and Europe.
+            </p>
+            <div class="hero-metrics">
+                <div class="hm"><div class="hm-n">₹1<span>Cr</span></div><div class="hm-l">Average scholarship<br>secured</div></div>
+                <div class="hm-divider"></div>
+                <div class="hm"><div class="hm-n">100<span>%</span></div><div class="hm-l">Undergrad<br>acceptance</div></div>
+                <div class="hm-divider"></div>
+                <div class="hm"><div class="hm-n">98<span>%</span></div><div class="hm-l">Students in top 5<br>choices</div></div>
+            </div>
+        </div>
+
+        <div class="form-card" id="hf">
+            <div class="form-success" id="hf-ok">
+                <div class="success-check">✓</div>
+                <h3>Consultation request received</h3>
+                <p>A Blue Ocean advisor will be in touch within 24 hours to confirm the next step.</p>
+            </div>
+            <div class="form-step active" id="h1">
+                <div class="ft ft-sans">Request an Initial Review</div>
+                <p class="fs">Share a few details so we can route your enquiry to the most relevant advisor.</p>
+                <div class="tog" data-value="student">
+                    <button class="tog-btn on" onclick="tog(this,'student','h')">Student ✓</button>
+                    <button class="tog-btn"    onclick="tog(this,'guardian','h')">Guardian</button>
+                </div>
+                <div class="fg"><label class="fl">First Name</label><input class="fi" id="h-fn" placeholder="Arjun"></div>
+                <div class="fg"><label class="fl">Last Name</label><input class="fi" id="h-ln" placeholder="Sharma"></div>
+                <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" id="h-em" placeholder="arjun@gmail.com"></div>
+                <button class="btn-p" onclick="hNext()">Continue →</button>
+                <div class="dots"><div class="dot on"></div><div class="dot"></div></div>
+            </div>
+            <div class="form-step" id="h2">
+                <div class="ft ft-sans">A Few More Details</div>
+                <p class="fs">This helps us prepare relevant context before your call.</p>
+                <div class="fg">
+                    <label class="fl">Phone Number</label>
+                    <div class="phone-row">
+                        <div class="phone-pfx">🇮🇳 +91</div>
+                        <input class="fi" id="h-ph" placeholder="98765 43210" style="flex:1">
+                    </div>
+                </div>
+                <div class="fg">
+                    <label class="fl">Current Grade / Graduation Year</label>
+                    <select class="fi" id="h-gr">
+                        <option value="">Select grade or graduation year</option>
+                        <option>Grade 8 (graduating 2030)</option>
+                        <option>Grade 9 (graduating 2029)</option>
+                        <option>Grade 10 (graduating 2028)</option>
+                        <option>Grade 11 (graduating 2027)</option>
+                        <option>Grade 12 (graduating 2026)</option>
+                        <option>Gap Year / Deferred Entry</option>
+                        <option>Undergraduate (MBA/Masters applicant)</option>
+                    </select>
+                </div>
+                <div class="fg"><label class="fl">School Name</label><input class="fi" id="h-sc" placeholder="Full name of your school"></div>
+                <div class="fg">
+                    <label class="fl">Scholarship Funding Required?</label>
+                    <select class="fi" id="h-sf">
+                        <option value="">Select an option</option>
+                        <option>Financial aid is not needed. My family can cover all of the costs.</option>
+                        <option>I would like to know what financial aid options are open to me, but I don't need it.</option>
+                        <option>I need some financial aid, but my family can cover most of the costs.</option>
+                        <option>I need at least 50% of costs covered by financial aid.</option>
+                        <option>I need 100% of costs covered by financial aid.</option>
+                    </select>
+                </div>
+                <div class="form-row-btns">
+                    <button class="btn-b" onclick="hPrev()">← Back</button>
+                    <button class="btn-p" onclick="hSub()">Request Consultation</button>
+                </div>
+                <p class="form-priv">By submitting, you agree to Blue Ocean Education's <a href="#">Privacy Policy</a> and consent to be contacted regarding your enquiry.</p>
+                <div class="dots"><div class="dot"></div><div class="dot on"></div></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── TICKER ── -->
+<div class="ticker-wrap">
+    <div class="ticker-inner" id="tkr">
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Prateek</span><span class="ti-n">-> Harvard</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Adya</span><span class="ti-n">-> Harvard</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Anushka</span><span class="ti-n">-> Columbia</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Manya</span><span class="ti-n">-> Brown</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Purusharth</span><span class="ti-n">-> UPenn</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Bhakti</span><span class="ti-n">-> Yale</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Tathagata</span><span class="ti-n">-> Cornell Tech</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Anushka</span><span class="ti-n">-> Cambridge</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Manya</span><span class="ti-n">-> Carnegie Mellon</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Bhakti</span><span class="ti-n">-> HEC Paris</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shreejeet</span><span class="ti-n">-> Boston University</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shreejeet</span><span class="ti-n">-> University of Toronto</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Randitya</span><span class="ti-n">-> Manchester</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Randitya</span><span class="ti-n">-> UIUC</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Arunima</span><span class="ti-n">-> Harvard MPA</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shambhavi</span><span class="ti-n">-> Bocconi</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shambhavi</span><span class="ti-n">-> University of Toronto</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shreejeet</span><span class="ti-n">-> Northeastern</span></div>
+        <!-- duplicate for seamless loop -->
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Prateek</span><span class="ti-n">-> Harvard</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Adya</span><span class="ti-n">-> Harvard</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Anushka</span><span class="ti-n">-> Columbia</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Manya</span><span class="ti-n">-> Brown</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Purusharth</span><span class="ti-n">-> UPenn</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Bhakti</span><span class="ti-n">-> Yale</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Tathagata</span><span class="ti-n">-> Cornell Tech</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Anushka</span><span class="ti-n">-> Cambridge</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Manya</span><span class="ti-n">-> Carnegie Mellon</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Bhakti</span><span class="ti-n">-> HEC Paris</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shreejeet</span><span class="ti-n">-> Boston University</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shreejeet</span><span class="ti-n">-> University of Toronto</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Randitya</span><span class="ti-n">-> Manchester</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Randitya</span><span class="ti-n">-> UIUC</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Arunima</span><span class="ti-n">-> Harvard MPA</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shambhavi</span><span class="ti-n">-> Bocconi</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shambhavi</span><span class="ti-n">-> University of Toronto</span></div>
+        <div class="ti"><div class="ti-sep"></div><span class="ti-c">Shreejeet</span><span class="ti-n">-> Northeastern</span></div>
+    </div>
+</div>
+
+<!-- ── BEYOND TRANSCRIPT ── -->
+<section class="section context-section">
+    <div class="wrap">
+        <div class="bt-grid">
+            <div class="fade">
+                <span class="sec-tag">Context</span>
+                <h2 class="sec-h">A Strong Application Requires More Than Academic Achievement</h2>
+                <p class="sec-b">Each year, thousands of students with near-perfect transcripts are rejected from Harvard, Yale, and Columbia — not due to academic deficiency, but because their applications lack differentiation. Admissions committees at selective universities are evaluating:</p>
+                <ul class="bt-list">
+                    <li><div class="ic">+</div>A coherent personal narrative unique to the applicant</li>
+                    <li><div class="ic">+</div>Demonstrated leadership with verifiable impact</li>
+                    <li><div class="ic">+</div>Extracurricular depth, not breadth</li>
+                    <li><div class="ic">+</div>Essays that convey genuine intellectual curiosity</li>
+                    <li><div class="ic">+</div>A long-term application strategy, not reactive preparation</li>
+                </ul>
+            </div>
+            <div class="bt-img fade">
+                <img src="testimonial_pics_ai/tathagata.png" alt="Tathagata student portrait" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="bt-img-ph" style="display:none">
+                    <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="rgba(255,255,255,0.08)"/><path d="M20 10a6 6 0 100 12 6 6 0 000-12zM10 32c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="rgba(255,255,255,0.3)" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    Portrait photo · 600 × 750 px<br><small>filename: tathagata.png</small>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── RESULTS ── -->
+<section class="section results-section" id="results">
+    <div class="wrap">
+        <div class="results-head fade">
+            <h2 class="res-h">Selective admissions, in context.</h2>
+            <p class="res-copy">A directional view of recent undergraduate outcomes across the institutions highlighted on this page.</p>
+        </div>
+
+        <div class="results-board">
+            <article class="results-card feature-card fade">
+                <img class="feature-img" id="repProfileImage" src="testimonial_pics_ai/shreejeet.png" alt="Shreejeet student profile" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="feature-fallback">
+                    <svg width="52" height="52" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="rgba(255,255,255,0.08)"/><path d="M20 10a6 6 0 100 12 6 6 0 000-12zM10 32c0-5.523 4.477-10 10-10s10 4.477 10 10" stroke="rgba(255,255,255,0.35)" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </div>
+                <div class="feature-top">
+                    <div class="feature-copy-block">
+                        <div class="feature-name" id="repName">Shreejeet</div>
+                        <div class="feature-meta" id="repMeta">University of Toronto</div>
+                    </div>
+                </div>
+                <div class="feature-bottom">
+                    <div class="feature-number count-up" data-target="98" data-suffix="%" data-duration="1500">98%</div>
+                    <p class="feature-copy">of undergraduate students secured at least one offer from their top five university choices.</p>
+                </div>
+            </article>
+
+            <div class="results-stack">
+                <article class="results-card stat-card fade">
+                <span class="stat-kicker">Relative uplift</span>
+                <div class="stat-number count-up" data-target="5" data-prefix="~" data-suffix="x" data-duration="1500">~5x</div>
+                <p>Directional comparison across the highlighted institutions, with more conservative estimates applied at the most selective end.</p>
+                </article>
+
+                <article class="results-card stat-card fade">
+                    <span class="stat-kicker">Undergrad acceptance</span>
+                    <div class="stat-number count-up" data-target="100" data-suffix="%" data-duration="1500">100%</div>
+                    <p>All highlighted undergraduate applicants in this sample received at least one admission offer.</p>
+                </article>
+            </div>
+
+            <article class="results-card results-panel fade">
+                <div class="results-panel-head">
+                    <div>
+                        <div class="results-panel-title">Institution-Specific Acceptance Rates</div>
+                        <p class="results-panel-copy">A directional comparison for the institutions featured most prominently on this page.</p>
+                    </div>
+                    <div class="chart-legend">
+                        <div class="cl"><div class="cl-swatch gen"></div>General rate</div>
+                        <div class="cl"><div class="cl-swatch boe"></div>Blue Ocean students</div>
+                    </div>
+                </div>
+                <div class="results-chart-grid" id="chartCols"></div>
+                <p class="results-footnote">Directional estimates shown for context only. They are not guarantees of admission, and published rates vary by year, programme, and applicant type.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ── STUDENT PROFILES ── -->
+<section class="section cards-section">
+    <div class="wrap">
+        <div class="cards-head fade">
+            <div>
+                <span class="sec-tag">Testimonials</span>
+                <h2 class="sec-h">What Students Said About Blue Ocean</h2>
+                <p class="cards-intro">A selection of recent student reflections on the process, with recurring appreciation for the strategic clarity of Dr. Sanjay, Chief Counselor, and the day-to-day guidance of Chaitanya, Lead Counselor.</p>
+            </div>
+            <div class="scroll-btns">
+                <button class="scr-btn" onclick="sc(-1)">←</button>
+                <button class="scr-btn" onclick="sc(1)">→</button>
+            </div>
+        </div>
+        <div class="cards-outer">
+            <div class="cards-scroll" id="ctrack">
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Harvard University</div>
+                    <div class="sc-name">Prateek</div>
+                    <p class="sc-note">“Blue Ocean never tried to manufacture a story for me. Dr. Sanjay helped me identify what was genuinely distinctive in my profile, and Chaitanya was extremely sharp on essays, timelines, and the final polish.”</p>
+                    <div class="sc-foot"><strong>Delhi · Undergraduate</strong><br>Scholarship secured: ₹95L</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Harvard University</div>
+                    <div class="sc-name">Adya</div>
+                    <p class="sc-note">“The process felt serious without becoming overwhelming. Chaitanya pushed every draft to be clearer and more precise, while Dr. Sanjay kept the overall strategy academically grounded from start to finish.”</p>
+                    <div class="sc-foot"><strong>Delhi · Undergraduate</strong><br>Scholarship secured: ₹1.05 Cr</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Harvard Kennedy School</div>
+                    <div class="sc-name">Arunima</div>
+                    <p class="sc-note">“What I valued most was the judgement. Blue Ocean was thoughtful about what to foreground and what to leave out, and both Dr. Sanjay and Chaitanya gave feedback that felt experienced rather than formulaic.”</p>
+                    <div class="sc-foot"><strong>Delhi · Graduate</strong><br>Scholarship secured: ₹80L</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Yale University</div>
+                    <div class="sc-name">Bhakti</div>
+                    <p class="sc-note">“Blue Ocean was direct, calm, and very honest about what needed work. Dr. Sanjay brought senior perspective to the school strategy, and Chaitanya was consistently available when the application pressure was highest.”</p>
+                    <div class="sc-foot"><strong>Delhi · MBA / Graduate</strong><br>Scholarship secured: ₹70L</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">University of Cambridge</div>
+                    <div class="sc-name">Anushka</div>
+                    <p class="sc-note">“The strongest part of the experience was how coherent everything became. Blue Ocean helped me connect internships, academics, and essays into one credible narrative, and nothing ever felt templated.”</p>
+                    <div class="sc-foot"><strong>Delhi · Undergraduate</strong><br>Also admitted to Columbia University</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Brown University</div>
+                    <div class="sc-name">Manya</div>
+                    <p class="sc-note">“They were particularly strong at helping me decide what not to say. That restraint made the application feel much more mature, and the final essays sounded like me rather than like a consultant.”</p>
+                    <div class="sc-foot"><strong>Delhi · Undergraduate</strong><br>Scholarship secured: ₹1.5 Cr</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Cornell Tech MBA</div>
+                    <div class="sc-name">Tathagata</div>
+                    <p class="sc-note">“As a graduate applicant, I appreciated how specific the guidance was to each school. Blue Ocean did not rely on generic MBA language, and both Dr. Sanjay and Chaitanya were thoughtful in every review round.”</p>
+                    <div class="sc-foot"><strong>Pune · Graduate</strong><br>Scholarship secured: ₹1.2 Cr</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">Bocconi University</div>
+                    <div class="sc-name">Shambhavi</div>
+                    <p class="sc-note">“The school selection process was one of the most useful parts for me. Blue Ocean helped me be realistic and ambitious at the same time, and Chaitanya stayed closely involved through every scholarship deadline.”</p>
+                    <div class="sc-foot"><strong>Delhi · Undergraduate</strong><br>Scholarship secured: ₹96L</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">University of Toronto</div>
+                    <div class="sc-name">Shreejeet</div>
+                    <p class="sc-note">“What stood out to me was the seriousness of the academic positioning. Dr. Sanjay quickly understood where my strengths were, and Chaitanya made sure the execution stayed disciplined all the way through.”</p>
+                    <div class="sc-foot"><strong>Delhi · Undergraduate</strong><br>Also admitted to Boston University</div>
+                </div>
+
+                <div class="sc">
+                    <div class="sc-stars" aria-label="Five stars">★★★★★</div>
+                    <div class="sc-school">University of Illinois Urbana-Champaign</div>
+                    <div class="sc-name">Randitya</div>
+                    <p class="sc-note">“I joined relatively late in the cycle, so the process needed to be efficient. Blue Ocean built structure very quickly, and the guidance still felt careful and individual rather than rushed.”</p>
+                    <div class="sc-foot"><strong>Gurgaon · Undergraduate</strong><br>10 offers secured in one cycle</div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── APPROACH ── -->
+<section class="section" style="background:white">
+    <div class="wrap">
+        <div class="approach-grid">
+            <div class="ap-img fade">
+                <img src="dr-sanjay.png" alt="Dr. Sanjay, Chief Counselor" onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
+                <div class="ap-img-ph" style="display:none; flex-direction:column; align-items:center; justify-content:center; height:100%; gap:10px;">
+                    <svg width="40" height="40" fill="none" viewBox="0 0 40 40"><rect width="40" height="40" rx="8" fill="rgba(0,86,179,0.1)"/><path d="M20 10a5 5 0 100 10 5 5 0 000-10zM10 30c0-5 4.477-9 10-9s10 4 10 9" stroke="#1D5DB8" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    Advisor portrait · 500 × 660 px<br><small>filename: dr-sanjay.png</small>
+                </div>
+            </div>
+            <div class="fade">
+                <span class="sec-tag">Our Approach</span>
+                <h2 class="sec-h">Profile-Led Strategy from the Outset</h2>
+                <p class="sec-b">We work backwards from each institution's published admission data and historical student profiles to develop a strategy that is specific, not generic. Every component of the application — from extracurricular sequencing to essay argument — follows from that strategy.</p>
+                <div class="pillars">
+                    <div class="pillar"><div class="p-num">01</div><div><div class="p-title">Long-Horizon Planning</div><div class="p-body">For students in Grades 8–10, we design a multi-year academic and extracurricular roadmap aligned to target institutions.</div></div></div>
+                    <div class="pillar"><div class="p-num">02</div><div><div class="p-title">Spike Identification and Development</div><div class="p-body">We identify the specific domain — research, performance, industry exposure — in which the student can build genuine, demonstrable distinction.</div></div></div>
+                    <div class="pillar"><div class="p-num">03</div><div><div class="p-title">Essay Development with Admissions Readers</div><div class="p-body">Essays are developed in consultation with former Ivy League admissions officers, grounded in what the process actually evaluates.</div></div></div>
+                    <div class="pillar"><div class="p-num">04</div><div><div class="p-title">Merit Scholarship Positioning</div><div class="p-body">Scholarship applications are treated as a parallel strategy, not an afterthought. We have secured awards from ₹70L to ₹1.5 Cr for individual students.</div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── CTA SECTION ── -->
+<section class="section cta-bg" id="consult">
+    <div class="wrap">
+        <div class="cta-grid">
+            <div class="fade">
+                <span class="sec-tag">Initial Consultation</span>
+                <h2 class="sec-h">What the Initial Consultation Covers</h2>
+                <p class="sec-b">The first conversation is designed to assess academic trajectory, extracurricular positioning, target universities, and scholarship requirements. Families receive a candid view of where the profile currently stands and where further development may be required.</p>
+                <div class="cta-items">
+                    <div class="ci"><div class="ci-n">01</div><div><div class="ci-title">A breakdown of your current academic and extracurricular profile</div></div></div>
+                    <div class="ci"><div class="ci-n">02</div><div><div class="ci-title">Insights on where you stand in the competitive admissions landscape</div></div></div>
+                    <div class="ci"><div class="ci-n">03</div><div><div class="ci-title">A personalized understanding of how we can help you strengthen your application.</div></div></div>
+                    <div class="ci"><div class="ci-n">04</div><div><div class="ci-title">Answers to your questions from an expert advisor</div></div></div>
+                </div>
+            </div>
+
+            <div class="form-card" id="bf">
+                <div class="form-success" id="bf-ok">
+                    <div class="success-check">✓</div>
+                    <h3>Consultation request received</h3>
+                    <p>A Blue Ocean advisor will be in touch within 24 hours to confirm your consultation.</p>
+                </div>
+                <div class="form-step active" id="b1">
+                    <div class="ft ft-sans">Request a Consultation</div>
+                    <p class="fs">A short academic intake so we can prepare for a substantive first conversation.</p>
+                    <div class="tog" data-value="student">
+                        <button class="tog-btn on" onclick="tog(this,'student','b')">Student ✓</button>
+                        <button class="tog-btn"    onclick="tog(this,'guardian','b')">Guardian</button>
+                    </div>
+                    <div class="fg"><label class="fl">First Name</label><input class="fi" id="b-fn" placeholder="Arjun"></div>
+                    <div class="fg"><label class="fl">Last Name</label><input class="fi" id="b-ln" placeholder="Sharma"></div>
+                    <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" id="b-em" placeholder="arjun@gmail.com"></div>
+                    <button class="btn-p" onclick="bNext()">Continue →</button>
+                    <div class="dots"><div class="dot on"></div><div class="dot"></div></div>
+                </div>
+                <div class="form-step" id="b2">
+                    <div class="ft ft-sans">A Few More Details</div>
+                    <p class="fs">This helps us direct you to the most relevant advisor.</p>
+                    <div class="fg">
+                        <label class="fl">Phone Number</label>
+                        <div class="phone-row">
+                            <div class="phone-pfx">🇮🇳 +91</div>
+                            <input class="fi" id="b-ph" placeholder="98765 43210" style="flex:1">
+                        </div>
+                    </div>
+                    <div class="fg">
+                        <label class="fl">Current Grade / Graduation Year</label>
+                        <select class="fi" id="b-gr">
+                            <option value="">Select grade or graduation year</option>
+                            <option>Grade 8 (graduating 2030)</option>
+                            <option>Grade 9 (graduating 2029)</option>
+                            <option>Grade 10 (graduating 2028)</option>
+                            <option>Grade 11 (graduating 2027)</option>
+                            <option>Grade 12 (graduating 2026)</option>
+                            <option>Gap Year / Deferred Entry</option>
+                            <option>Undergraduate (MBA/Masters applicant)</option>
+                        </select>
+                    </div>
+                    <div class="fg"><label class="fl">School Name</label><input class="fi" id="b-sc" placeholder="Full name of your school"></div>
+                    <div class="fg">
+                        <label class="fl">Scholarship Funding Required?</label>
+                        <select class="fi" id="b-sf">
+                            <option value="">Select an option</option>
+                            <option>Financial aid is not needed. My family can cover all of the costs.</option>
+                            <option>I would like to know what financial aid options are open to me, but I don't need it.</option>
+                            <option>I need some financial aid, but my family can cover most of the costs.</option>
+                            <option>I need at least 50% of costs covered by financial aid.</option>
+                            <option>I need 100% of costs covered by financial aid.</option>
+                        </select>
+                    </div>
+                    <div class="form-row-btns">
+                        <button class="btn-b" onclick="bPrev()">← Back</button>
+                        <button class="btn-p" onclick="bSub()">Request Consultation</button>
+                    </div>
+                    <p class="form-priv">By submitting, you agree to Blue Ocean Education's <a href="#">Privacy Policy</a> and consent to be contacted regarding your enquiry.</p>
+                    <div class="dots"><div class="dot"></div><div class="dot on"></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+    <div class="nav-logo" style="text-decoration:none">
+        <div class="nav-mark" aria-hidden="true"><img src="Untitled%20design%20%281%29.svg" alt=""></div>
+        <div>
+            <div class="nav-name">Blue Ocean Education</div>
+            <div class="nav-sub">© 2026 · All rights reserved</div>
+        </div>
+    </div>
+    <div class="f-links">
+        <a href="#">Terms of Use</a>
+        <a href="#">Privacy Policy</a>
+        <a href="#">Cookie Preferences</a>
+    </div>
+    <div class="f-disc">Blue Ocean Education is not affiliated with, endorsed by, or associated with any university or institution mentioned on this website.</div>
+</footer>
+
+<!-- ── STICKY BAR ── -->
+<div class="sticky" id="sbar">
+    <div class="sticky-txt">Talk to Our Experts Today!</div>
+    <button class="sticky-btn" onclick="document.getElementById('consult').scrollIntoView({behavior:'smooth'})">Book Now!</button>
+</div>
+
+<script>
+const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxzYB2CtlMlPP0H9zCeEJAElhuSRWnF5RdyiL75JH_G2PcOn7ExTbxdc6kDev63ssMo8w/exec';
+
+/* ── FORM TOGGLES ── */
+function tog(btn, type, prefix) {
+    const toggleGroup = btn.closest('.tog');
+    toggleGroup.dataset.value = type;
+    toggleGroup.querySelectorAll('.tog-btn').forEach(b => {
+        b.classList.remove('on');
+        b.textContent = b.textContent.replace(' ✓','');
+    });
+    btn.classList.add('on');
+    btn.textContent = (type === 'student' ? 'Student' : 'Guardian') + ' ✓';
+}
+
+function isSheetWebhookConfigured() {
+    return SHEET_WEBHOOK_URL && !SHEET_WEBHOOK_URL.includes('PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE');
+}
+
+function getSelectedUserType(prefix) {
+    const toggle = document.querySelector(`#${prefix}f .tog`);
+    return toggle?.dataset.value || 'student';
+}
+
+function getLeadPayload(prefix, formSource) {
+    const phone = document.getElementById(`${prefix}-ph`).value.trim();
+
+    return {
+        timestamp: new Date().toISOString(),
+        form_source: formSource,
+        user_type: getSelectedUserType(prefix),
+        first_name: document.getElementById(`${prefix}-fn`).value.trim(),
+        last_name: document.getElementById(`${prefix}-ln`).value.trim(),
+        email: document.getElementById(`${prefix}-em`).value.trim(),
+        phone: phone ? `+91 ${phone}` : '',
+        grade: document.getElementById(`${prefix}-gr`).value,
+        school_name: document.getElementById(`${prefix}-sc`).value.trim(),
+        financial_aid: document.getElementById(`${prefix}-sf`).value,
+        page_url: window.location.href,
+        page_title: document.title
+    };
+}
+
+function validateLeadPayload(payload) {
+    if (!payload.first_name || !payload.last_name || !payload.email.includes('@')) {
+        alert('Please complete all fields with a valid email address.');
+        return false;
+    }
+    if (!payload.phone || !payload.grade || !payload.school_name || !payload.financial_aid) {
+        alert('Please complete your phone number, grade, school name, and financial-aid requirement.');
+        return false;
+    }
+    return true;
+}
+
+function setFormSubmitting(formId, isSubmitting) {
+    const activeButton = document.querySelector(`#${formId} .form-step.active .btn-p`);
+    if (!activeButton) return;
+
+    if (!activeButton.dataset.defaultLabel) {
+        activeButton.dataset.defaultLabel = activeButton.textContent;
+    }
+
+    activeButton.disabled = isSubmitting;
+    activeButton.style.opacity = isSubmitting ? '0.72' : '1';
+    activeButton.style.cursor = isSubmitting ? 'wait' : 'pointer';
+    activeButton.textContent = isSubmitting ? 'Submitting…' : activeButton.dataset.defaultLabel;
+}
+
+async function postLeadToSheet(payload) {
+    if (!isSheetWebhookConfigured()) {
+        throw new Error('Missing Google Sheets webhook URL.');
+    }
+
+    const body = new URLSearchParams();
+    Object.entries(payload).forEach(([key, value]) => body.append(key, value ?? ''));
+
+    await fetch(SHEET_WEBHOOK_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        body
+    });
+}
+
+async function submitLead(prefix, formSource, formId, stepId, successId) {
+    const payload = getLeadPayload(prefix, formSource);
+    if (!validateLeadPayload(payload)) return;
+
+    setFormSubmitting(formId, true);
+
+    try {
+        await postLeadToSheet(payload);
+        document.getElementById(stepId).classList.remove('active');
+        document.getElementById(successId).classList.add('show');
+    } catch (error) {
+        console.error('Lead submission failed:', error);
+        if (!isSheetWebhookConfigured()) {
+            alert('Paste your deployed Google Apps Script URL into SHEET_WEBHOOK_URL to enable Google Sheets lead capture.');
+        } else {
+            alert('There was a problem saving your details. Please try again.');
+        }
+    } finally {
+        setFormSubmitting(formId, false);
+    }
+}
+
+/* ── HERO FORM ── */
+function hNext() {
+    const fn = document.getElementById('h-fn').value.trim();
+    const ln = document.getElementById('h-ln').value.trim();
+    const em = document.getElementById('h-em').value.trim();
+    if (!fn || !ln || !em.includes('@')) { alert('Please complete all fields with a valid email address.'); return; }
+    document.getElementById('h1').classList.remove('active');
+    document.getElementById('h2').classList.add('active');
+}
+function hPrev() { document.getElementById('h2').classList.remove('active'); document.getElementById('h1').classList.add('active'); }
+async function hSub() {
+    await submitLead('h', 'hero', 'hf', 'h2', 'hf-ok');
+}
+
+/* ── BOTTOM FORM ── */
+function bNext() {
+    const fn = document.getElementById('b-fn').value.trim();
+    const ln = document.getElementById('b-ln').value.trim();
+    const em = document.getElementById('b-em').value.trim();
+    if (!fn || !ln || !em.includes('@')) { alert('Please complete all fields with a valid email address.'); return; }
+    document.getElementById('b1').classList.remove('active');
+    document.getElementById('b2').classList.add('active');
+}
+function bPrev() { document.getElementById('b2').classList.remove('active'); document.getElementById('b1').classList.add('active'); }
+async function bSub() {
+    await submitLead('b', 'consultation', 'bf', 'b2', 'bf-ok');
+}
+
+/* ── CARDS SCROLL ── */
+function sc(dir) { document.getElementById('ctrack').scrollBy({ left: dir * 296, behavior: 'smooth' }); }
+
+/* ── REPRESENTATIVE PROFILE ── */
+const representativeProfiles = [
+    { name: 'Shreejeet', university: 'University of Toronto', image: 'testimonial_pics_ai/shreejeet.png' },
+    { name: 'Prateek', university: 'Harvard University', image: 'testimonial_pics_ai/prateek.png' },
+    { name: 'Adya', university: 'Harvard University', image: 'testimonial_pics_ai/adya.png' },
+    { name: 'Anushka', university: 'University of Cambridge', image: 'testimonial_pics_ai/anushka.png' },
+    { name: 'Manya', university: 'Brown University', image: 'testimonial_pics_ai/manya.png' }
+];
+
+let representativeIndex = 0;
+let representativeTimer = null;
+
+function applyRepresentativeProfile(index, immediate = false) {
+    const profile = representativeProfiles[index];
+    const card = document.querySelector('.feature-card');
+    const image = document.getElementById('repProfileImage');
+    const name = document.getElementById('repName');
+    const meta = document.getElementById('repMeta');
+
+    if (!profile || !card || !image || !name || !meta) return;
+
+    const commit = () => {
+        representativeIndex = index;
+        image.style.display = '';
+        if (image.nextElementSibling) image.nextElementSibling.style.display = 'none';
+        image.src = profile.image;
+        image.alt = `${profile.name} student profile`;
+        name.textContent = profile.name;
+        meta.textContent = profile.university;
+        requestAnimationFrame(() => card.classList.remove('is-switching'));
+    };
+
+    if (immediate) {
+        commit();
+        return;
+    }
+
+    card.classList.add('is-switching');
+    setTimeout(commit, 180);
+}
+
+function initRepresentativeProfiles() {
+    if (representativeTimer) clearInterval(representativeTimer);
+    applyRepresentativeProfile(0, true);
+    representativeTimer = setInterval(() => {
+        applyRepresentativeProfile((representativeIndex + 1) % representativeProfiles.length);
+    }, 3600);
+}
+
+function formatCountValue(value, decimals) {
+    return decimals > 0 ? value.toFixed(decimals) : `${Math.round(value)}`;
+}
+
+function animateCountUp(el) {
+    const target = parseFloat(el.dataset.target || '0');
+    const decimals = parseInt(el.dataset.decimals || '0', 10);
+    const prefix = el.dataset.prefix || '';
+    const suffix = el.dataset.suffix || '';
+    const duration = parseInt(el.dataset.duration || '1400', 10);
+    const start = performance.now();
+
+    function tick(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = target * eased;
+        el.textContent = `${prefix}${formatCountValue(current, decimals)}${suffix}`;
+
+        if (progress < 1) requestAnimationFrame(tick);
+        else el.textContent = `${prefix}${formatCountValue(target, decimals)}${suffix}`;
+    }
+
+    requestAnimationFrame(tick);
+}
+
+function initCountUps() {
+    const counters = document.querySelectorAll('.count-up');
+    if (!counters.length) return;
+
+    counters.forEach(counter => {
+        const prefix = counter.dataset.prefix || '';
+        const suffix = counter.dataset.suffix || '';
+        const decimals = parseInt(counter.dataset.decimals || '0', 10);
+        counter.textContent = `${prefix}${formatCountValue(0, decimals)}${suffix}`;
+    });
+
+    const counterObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+            animateCountUp(entry.target);
+            counterObserver.unobserve(entry.target);
+        });
+    }, { threshold: 0.45 });
+
+    counters.forEach(counter => counterObserver.observe(counter));
+}
+
+/* ── RESULTS DATA ── */
+const resultsData = [
+    { name: 'Harvard', general: 3.5, cohort: 12.0 },
+    { name: 'Yale', general: 4.6, cohort: 16.0 },
+    { name: 'Columbia', general: 3.9, cohort: 14.0 },
+    { name: 'Brown', general: 5.0, cohort: 20.0 },
+    { name: 'UPenn', general: 5.7, cohort: 24.0 },
+    { name: 'Cornell', general: 8.7, cohort: 38.0 }
+];
+const resultsScaleMax = Math.max(...resultsData.flatMap(item => [item.general, item.cohort])) * 1.05;
+
+function formatRate(rate) {
+    return Number.isInteger(rate) ? `${rate}%` : `${rate.toFixed(1)}%`;
+}
+
+function formatWidth(rate) {
+    return `${Math.min((rate / resultsScaleMax) * 100, 100).toFixed(2)}`;
+}
+
+function renderResultsChart() {
+    const chart = document.getElementById('chartCols');
+    if (!chart) return;
+
+    chart.innerHTML = `
+        <div class="results-chart-col">
+            ${resultsData.map(item => `
+                <div class="bi">
+                    <div class="bi-head">
+                        <div class="bi-lbl">${item.name}</div>
+                        <div class="bi-multiple">${(item.cohort / item.general).toFixed(1)}x</div>
+                    </div>
+                    <div class="bi-row">
+                        <div class="bi-track gen-t"><div class="bi-fill gen" data-w="${formatWidth(item.general)}"></div></div>
+                        <span class="bi-pct gen-p">${formatRate(item.general)}</span>
+                    </div>
+                    <div class="bi-row">
+                        <div class="bi-track boe-t"><div class="bi-fill boe" data-w="${formatWidth(item.cohort)}"></div></div>
+                        <span class="bi-pct boe-p">${formatRate(item.cohort)}</span>
+                    </div>
+                </div>
+            `).join('')}
+        </div>
+    `;
+}
+
+initRepresentativeProfiles();
+initCountUps();
+renderResultsChart();
+
+/* ── STICKY BAR ── */
+const sbar = document.getElementById('sbar');
+window.addEventListener('scroll', () => sbar.classList.toggle('up', window.scrollY > 420), { passive: true });
+
+/* ── FADE IN ── */
+const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade').forEach(el => io.observe(el));
+
+/* ── BAR CHART ANIMATION ── */
+const bio = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+        if (e.isIntersecting) {
+            e.target.querySelectorAll('.bi-fill').forEach((bar, i) => {
+                const w = parseFloat(bar.dataset.w);
+                setTimeout(() => { bar.style.width = w + '%'; }, 100 + i * 30);
+            });
+            bio.unobserve(e.target);
+        }
+    });
+}, { threshold: 0.15 });
+document.querySelectorAll('#chartCols').forEach(el => bio.observe(el));
+</script>
+</body>
+</html>
