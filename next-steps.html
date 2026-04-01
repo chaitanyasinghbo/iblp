@@ -432,31 +432,32 @@
         }
 
         .newsletter-form {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 12px;
+            display: grid;
+            grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr) auto;
+            gap: 10px;
             margin-top: 18px;
             max-width: 700px;
+            align-items: center;
         }
 
         .newsletter-input {
-            flex: 1 1 280px;
             min-width: 0;
-            min-height: 52px;
-            padding: 0 16px;
-            border-radius: 16px;
+            min-height: 46px;
+            padding: 0 14px;
+            border-radius: 14px;
             border: 1px solid rgba(255, 255, 255, 0.18);
-            background: rgba(255, 255, 255, 0.12);
+            background: rgba(255, 255, 255, 0.1);
             color: white;
             font: inherit;
-            font-size: 16px;
+            font-size: 15px;
             line-height: 1.4;
             outline: none;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
         }
 
         .newsletter-input::placeholder {
             color: rgba(255, 255, 255, 0.64);
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.4;
         }
 
@@ -563,17 +564,35 @@
             }
 
             .newsletter-form {
-                flex-direction: column;
-                gap: 10px;
+                grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+                gap: 8px;
             }
 
-            .newsletter-input,
+            .newsletter-input {
+                width: 100%;
+                min-height: 42px;
+                padding: 0 12px;
+                font-size: 14px;
+                border-radius: 12px;
+            }
+
+            .newsletter-input::placeholder {
+                font-size: 13px;
+            }
+
             .newsletter-submit,
             .action-btn,
             .blog-link {
                 width: 100%;
                 min-height: 52px;
                 padding: 12px 16px;
+            }
+
+            .newsletter-submit {
+                grid-column: 1 / -1;
+                min-height: 44px;
+                padding: 10px 14px;
+                border-radius: 12px;
             }
 
             .blog-links {
@@ -602,6 +621,28 @@
             .section-head p,
             .hero p {
                 font-size: 13.5px;
+            }
+
+            .newsletter-form {
+                grid-template-columns: minmax(0, 0.82fr) minmax(0, 1.18fr);
+                gap: 8px;
+                max-width: 100%;
+            }
+
+            .newsletter-input {
+                min-height: 40px;
+                padding: 0 11px;
+                font-size: 13.5px;
+                border-radius: 11px;
+            }
+
+            .newsletter-input::placeholder {
+                font-size: 12.5px;
+            }
+
+            .newsletter-submit {
+                min-height: 42px;
+                font-size: 13px;
             }
         }
     </style>
@@ -648,12 +689,12 @@
                         <div class="step-main">
                             <span class="step-kicker">Newsletter</span>
                             <h3>Subscribe to the Blue Ocean University Newsletter</h3>
-                            <p>Enter your first name and email to stay updated on university admissions guidance, resources, deadlines, and Blue Ocean insights. We will open the newsletter page in a new tab after you subscribe.</p>
+                            <p>Enter your first name and email to stay updated on university admissions guidance, resources, deadlines, and Blue Ocean insights.</p>
                             <form class="newsletter-form" id="newsletterForm">
                                 <label class="sr-only" for="newsletterFirstName">First name</label>
                                 <input class="newsletter-input" type="text" id="newsletterFirstName" name="newsletterFirstName" placeholder="First name" autocomplete="given-name">
                                 <label class="sr-only" for="newsletterEmail">Email address</label>
-                                <input class="newsletter-input" type="email" id="newsletterEmail" name="newsletterEmail" placeholder="Enter your email address" autocomplete="email">
+                                <input class="newsletter-input" type="email" id="newsletterEmail" name="newsletterEmail" placeholder="Email address" autocomplete="email">
                                 <button class="newsletter-submit" type="submit" id="newsletterSubmit">Subscribe</button>
                             </form>
                             <div class="newsletter-status" id="newsletterStatus">You can use the same details you submitted on the previous form.</div>
@@ -720,7 +761,6 @@
 
     <script>
         const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxzYB2CtlMlPP0H9zCeEJAElhuSRWnF5RdyiL75JH_G2PcOn7ExTbxdc6kDev63ssMo8w/exec';
-        const NEWSLETTER_URL = 'https://www.blueocean.education/blank-2';
         const newsletterForm = document.getElementById('newsletterForm');
         const newsletterFirstName = document.getElementById('newsletterFirstName');
         const newsletterEmail = document.getElementById('newsletterEmail');
@@ -815,23 +855,14 @@
                 return;
             }
 
-            const newsletterWindow = window.open(NEWSLETTER_URL, '_blank', 'noopener,noreferrer');
-            setNewsletterState(true, 'Opening the newsletter page in a new tab...', null);
+            setNewsletterState(true, 'Saving your subscription...', null);
 
             try {
                 await postNewsletterLead(firstName, email, savedLead);
-                if (!newsletterWindow) {
-                    setNewsletterState(false, 'Please allow pop-ups for this site so the newsletter page can open in a new tab.', 'error');
-                    return;
-                }
-                setNewsletterState(false, 'Subscribed. The newsletter page has opened in a new tab.', 'ok');
+                setNewsletterState(false, 'Success. You have been subscribed to the Blue Ocean University Newsletter.', 'ok');
             } catch (error) {
                 console.error('Newsletter signup capture failed:', error);
-                if (!newsletterWindow) {
-                    setNewsletterState(false, 'We could not open the newsletter page automatically. Please allow pop-ups and try again.', 'error');
-                    return;
-                }
-                setNewsletterState(false, 'The newsletter page has opened in a new tab. We could not save the email locally, but you can still continue there.', 'ok');
+                setNewsletterState(false, 'There was a problem saving your newsletter subscription. Please try again.', 'error');
             }
         });
     </script>
