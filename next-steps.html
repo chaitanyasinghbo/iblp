@@ -1,0 +1,839 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Ocean Education | Next Steps</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        :root {
+            --navy: #0B1C30;
+            --navy-2: #112742;
+            --navy-3: #16365E;
+            --blue: #1D5DB8;
+            --blue-2: #2B6CC5;
+            --blue-3: #4C84D2;
+            --blue-4: #DCE8F8;
+            --blue-5: #F4F8FE;
+            --ink: #0F172A;
+            --muted: #5B6474;
+            --line: rgba(11, 28, 48, 0.12);
+            --paper: #FFFFFF;
+            --shadow: 0 24px 54px rgba(8, 22, 40, 0.12);
+            --radius-xl: 30px;
+            --radius-lg: 24px;
+            --radius-md: 18px;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-text-size-adjust: 100%;
+        }
+
+        body {
+            min-height: 100vh;
+            font-family: 'Inter', sans-serif;
+            color: var(--ink);
+            overflow-x: hidden;
+            background:
+                radial-gradient(circle at top left, rgba(29, 93, 184, 0.12) 0%, transparent 22%),
+                linear-gradient(180deg, #08182A 0%, #102744 21%, #F2F5FA 21%, #F8FAFD 100%);
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 900;
+            height: 62px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 44px;
+            background: rgba(11, 28, 48, 0.97);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            min-width: 0;
+        }
+
+        .nav-mark {
+            width: 54px;
+            height: 54px;
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .nav-mark img {
+            width: 178%;
+            height: 178%;
+            max-width: none;
+            display: block;
+            object-fit: cover;
+            object-position: center;
+            transform: translateY(-1px);
+            filter: drop-shadow(0 5px 14px rgba(8, 28, 58, 0.24));
+        }
+
+        .nav-name {
+            color: white;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1;
+        }
+
+        .nav-sub {
+            color: rgba(255, 255, 255, 0.45);
+            font-size: 10px;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            margin-top: 2px;
+        }
+
+        .wrap {
+            width: min(1080px, calc(100vw - 32px));
+            margin: 0 auto;
+        }
+
+        .hero {
+            padding: 96px 0 28px;
+        }
+
+        .hero-shell {
+            position: relative;
+            overflow: hidden;
+            border-radius: 34px;
+            padding: clamp(24px, 4vw, 40px);
+            background:
+                linear-gradient(115deg, rgba(8, 24, 42, 0.96) 0%, rgba(16, 39, 68, 0.9) 48%, rgba(23, 55, 95, 0.84) 100%),
+                url('698172-2560x1369-desktop-hd-harvard-university-background.jpg') center center / cover no-repeat;
+            box-shadow: 0 28px 60px rgba(4, 12, 24, 0.28);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            color: white;
+        }
+
+        .hero-shell::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(circle at top right, rgba(118, 174, 224, 0.18), transparent 26%),
+                linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(255, 255, 255, 0));
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 760px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 14px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.12em;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.72);
+        }
+
+        .eyebrow::before {
+            content: '';
+            width: 30px;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.42);
+        }
+
+        .hero h1 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(34px, 5vw, 58px);
+            line-height: 1.02;
+            letter-spacing: -0.04em;
+            margin-bottom: 16px;
+            max-width: 11ch;
+            text-wrap: balance;
+            overflow-wrap: anywhere;
+        }
+
+        .hero p {
+            max-width: 58ch;
+            color: rgba(255, 255, 255, 0.84);
+            font-size: 15px;
+            line-height: 1.72;
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .hero-chip {
+            display: inline-flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 0 14px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 12.5px;
+            font-weight: 600;
+            backdrop-filter: blur(12px);
+            max-width: 100%;
+            white-space: normal;
+            line-height: 1.45;
+        }
+
+        .main {
+            padding: 6px 0 76px;
+        }
+
+        .section-shell {
+            background: rgba(255, 255, 255, 0.96);
+            border: 1px solid var(--line);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow);
+            padding: clamp(20px, 3.5vw, 32px);
+        }
+
+        .section-head {
+            margin-bottom: 22px;
+        }
+
+        .section-tag {
+            display: block;
+            margin-bottom: 10px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--blue);
+        }
+
+        .section-head h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(28px, 3.4vw, 42px);
+            line-height: 1.04;
+            letter-spacing: -0.04em;
+            color: var(--navy);
+            margin-bottom: 10px;
+            max-width: 14ch;
+            text-wrap: balance;
+            overflow-wrap: anywhere;
+        }
+
+        .section-head p {
+            max-width: 64ch;
+            color: var(--muted);
+            font-size: 14.5px;
+            line-height: 1.72;
+        }
+
+        .step-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .step-card {
+            display: grid;
+            grid-template-columns: 72px minmax(0, 1fr);
+            gap: 18px;
+            align-items: start;
+            border-radius: 26px;
+            padding: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            overflow: hidden;
+        }
+
+        .tone-1 {
+            background: linear-gradient(135deg, #0B1C30 0%, #164684 100%);
+            color: white;
+            box-shadow: 0 20px 44px rgba(12, 32, 60, 0.18);
+        }
+
+        .tone-2 {
+            background: linear-gradient(135deg, #17365E 0%, #2F68B5 100%);
+            color: white;
+            box-shadow: 0 18px 40px rgba(18, 40, 72, 0.16);
+        }
+
+        .tone-3 {
+            background: linear-gradient(135deg, #335D91 0%, #5E8FD1 100%);
+            color: white;
+            box-shadow: 0 18px 38px rgba(26, 54, 94, 0.14);
+        }
+
+        .tone-4 {
+            background: linear-gradient(135deg, #5D85BA 0%, #8AAEDB 100%);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.14);
+            box-shadow: 0 16px 34px rgba(36, 73, 118, 0.12);
+        }
+
+        .tone-5 {
+            background: linear-gradient(135deg, #A7C1E4 0%, #D6E4F6 100%);
+            color: var(--navy);
+            border-color: rgba(11, 28, 48, 0.1);
+        }
+
+        .step-number {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 18px;
+            font-weight: 700;
+            letter-spacing: -0.04em;
+        }
+
+        .tone-1 .step-number,
+        .tone-2 .step-number,
+        .tone-3 .step-number,
+        .tone-4 .step-number {
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.14);
+        }
+
+        .tone-5 .step-number {
+            background: rgba(11, 28, 48, 0.06);
+            color: var(--navy);
+            border: 1px solid rgba(11, 28, 48, 0.08);
+        }
+
+        .step-main {
+            min-width: 0;
+        }
+
+        .step-kicker {
+            display: inline-block;
+            margin-bottom: 8px;
+            font-size: 10.5px;
+            font-weight: 700;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .tone-1 .step-kicker,
+        .tone-2 .step-kicker,
+        .tone-3 .step-kicker,
+        .tone-4 .step-kicker { color: rgba(255, 255, 255, 0.74); }
+
+        .tone-5 .step-kicker { color: rgba(11, 28, 48, 0.56); }
+
+        .step-main h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(22px, 3vw, 30px);
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            margin-bottom: 10px;
+            text-wrap: balance;
+            overflow-wrap: anywhere;
+        }
+
+        .step-main p {
+            max-width: 56ch;
+            font-size: 14.5px;
+            line-height: 1.72;
+        }
+
+        .tone-1 .step-main p,
+        .tone-2 .step-main p,
+        .tone-3 .step-main p,
+        .tone-4 .step-main p { color: rgba(255, 255, 255, 0.88); }
+
+        .tone-5 .step-main p { color: var(--muted); }
+
+        .step-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            align-items: center;
+            margin-top: 18px;
+        }
+
+        .action-btn,
+        .blog-link,
+        .newsletter-submit {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 48px;
+            padding: 0 18px;
+            border-radius: 999px;
+            border: none;
+            cursor: pointer;
+            font-family: 'Inter', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            text-align: center;
+            white-space: normal;
+            line-height: 1.4;
+            transition: transform 0.18s ease, box-shadow 0.18s ease, background 0.18s ease, color 0.18s ease;
+        }
+
+        .action-btn:hover,
+        .blog-link:hover,
+        .newsletter-submit:hover { transform: translateY(-1px); }
+
+        .tone-1 .action-btn,
+        .tone-2 .action-btn,
+        .tone-3 .action-btn,
+        .tone-4 .action-btn,
+        .tone-1 .newsletter-submit {
+            background: white;
+            color: var(--navy);
+            box-shadow: 0 12px 28px rgba(8, 24, 42, 0.18);
+        }
+
+        .tone-5 .action-btn {
+            background: var(--navy);
+            color: white;
+            box-shadow: 0 12px 24px rgba(8, 24, 42, 0.12);
+        }
+
+        .newsletter-form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 18px;
+            max-width: 700px;
+        }
+
+        .newsletter-input {
+            flex: 1 1 280px;
+            min-width: 0;
+            min-height: 52px;
+            padding: 0 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.18);
+            background: rgba(255, 255, 255, 0.12);
+            color: white;
+            font: inherit;
+            font-size: 16px;
+            line-height: 1.4;
+            outline: none;
+        }
+
+        .newsletter-input::placeholder {
+            color: rgba(255, 255, 255, 0.64);
+            font-size: 15px;
+            line-height: 1.4;
+        }
+
+        .newsletter-input:focus {
+            border-color: rgba(255, 255, 255, 0.42);
+            background: rgba(255, 255, 255, 0.16);
+        }
+
+        .newsletter-status {
+            margin-top: 10px;
+            font-size: 12.5px;
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.76);
+        }
+
+        .newsletter-status.ok { color: rgba(255, 255, 255, 0.92); }
+        .newsletter-status.error { color: #FFE1E1; }
+
+        .blog-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 18px;
+        }
+
+        .blog-link {
+            background: rgba(11, 28, 48, 0.36);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.16);
+            min-height: 52px;
+            padding: 0 18px;
+        }
+
+        .blog-link:hover {
+            background: rgba(11, 28, 48, 0.54);
+            border-color: rgba(255, 255, 255, 0.24);
+        }
+
+        .blog-link.active {
+            background: rgba(255, 255, 255, 0.16);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.24);
+            box-shadow: 0 12px 24px rgba(10, 28, 52, 0.16);
+        }
+
+        .foot-note {
+            margin-top: 18px;
+            color: #7C8593;
+            font-size: 12px;
+            line-height: 1.65;
+        }
+
+        @media (max-width: 900px) {
+            .wrap { width: min(100vw - 24px, 1080px); }
+            .nav { padding: 0 20px; }
+            .hero-shell { border-radius: 28px; }
+            .step-card { padding: 22px 20px; }
+        }
+
+        @media (max-width: 720px) {
+            .wrap {
+                width: min(100vw - 20px, 1080px);
+            }
+
+            .hero { padding: 86px 0 20px; }
+            .hero-shell { border-radius: 24px; padding: 22px 18px; }
+            .hero p { font-size: 14px; }
+            .hero-meta {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            .hero-chip {
+                width: 100%;
+                justify-content: flex-start;
+                border-radius: 18px;
+                padding: 12px 14px;
+            }
+
+            .section-shell {
+                border-radius: 24px;
+                padding: 20px 16px;
+            }
+
+            .step-card {
+                grid-template-columns: 1fr;
+                gap: 14px;
+                padding: 18px 16px;
+                border-radius: 20px;
+            }
+
+            .step-number {
+                width: 48px;
+                height: 48px;
+                border-radius: 14px;
+                font-size: 16px;
+            }
+
+            .step-main h3 {
+                font-size: 22px;
+            }
+
+            .step-main p {
+                font-size: 14px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .newsletter-input,
+            .newsletter-submit,
+            .action-btn,
+            .blog-link {
+                width: 100%;
+                min-height: 52px;
+                padding: 12px 16px;
+            }
+
+            .blog-links {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 520px) {
+            .hero-shell {
+                padding: 20px 16px;
+            }
+
+            .hero h1 {
+                font-size: 31px;
+            }
+
+            .section-head h2 {
+                font-size: 26px;
+            }
+
+            .step-main h3 {
+                font-size: 20px;
+            }
+
+            .step-main p,
+            .section-head p,
+            .hero p {
+                font-size: 13.5px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="nav">
+        <a href="index.html" class="nav-logo">
+            <span class="nav-mark" aria-hidden="true"><img src="Untitled%20design%20%281%29.svg" alt=""></span>
+            <span>
+                <span class="nav-name">Blue Ocean Education</span>
+                <span class="nav-sub">University Admissions Consulting</span>
+            </span>
+        </a>
+    </nav>
+
+    <header class="hero">
+        <div class="wrap">
+            <div class="hero-shell">
+                <div class="hero-content">
+                    <div class="eyebrow">Submission Received</div>
+                    <h1 id="nextStepsTitle">Your next steps with Blue Ocean.</h1>
+                    <p id="nextStepsCopy">We have received your form. While our team reviews your profile, these are the five most useful next actions to take right now.</p>
+                    <div class="hero-meta">
+                        <div class="hero-chip" id="statusHeadline">A Blue Ocean advisor will review your form within 24 hours.</div>
+                        <div class="hero-chip">Every external action opens in a new tab.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="wrap">
+            <section class="section-shell">
+                <div class="section-head">
+                    <span class="section-tag">Next Actions</span>
+                    <h2>Use the next few minutes well.</h2>
+                    <p>Start at the top and work downward. The sequence is intentionally simple, easy to scan, and designed to give families the most useful Blue Ocean resources without friction.</p>
+                </div>
+
+                <ol class="step-list">
+                    <li class="step-card tone-1">
+                        <div class="step-number">01</div>
+                        <div class="step-main">
+                            <span class="step-kicker">Newsletter</span>
+                            <h3>Subscribe to the Blue Ocean University Newsletter</h3>
+                            <p>Enter your first name and email to stay updated on university admissions guidance, resources, deadlines, and Blue Ocean insights. We will open the newsletter page in a new tab after you subscribe.</p>
+                            <form class="newsletter-form" id="newsletterForm">
+                                <label class="sr-only" for="newsletterFirstName">First name</label>
+                                <input class="newsletter-input" type="text" id="newsletterFirstName" name="newsletterFirstName" placeholder="First name" autocomplete="given-name">
+                                <label class="sr-only" for="newsletterEmail">Email address</label>
+                                <input class="newsletter-input" type="email" id="newsletterEmail" name="newsletterEmail" placeholder="Enter your email address" autocomplete="email">
+                                <button class="newsletter-submit" type="submit" id="newsletterSubmit">Subscribe</button>
+                            </form>
+                            <div class="newsletter-status" id="newsletterStatus">You can use the same details you submitted on the previous form.</div>
+                        </div>
+                    </li>
+
+                    <li class="step-card tone-2">
+                        <div class="step-number">02</div>
+                        <div class="step-main">
+                            <span class="step-kicker">Webinar</span>
+                            <h3>Watch The Blue Ocean Admissions Playbook Webinar</h3>
+                            <p>Understand how Blue Ocean approaches profile positioning, school strategy, essays, scholarship planning, and thoughtful long-term application building.</p>
+                            <div class="step-actions">
+                                <a class="action-btn" href="https://event.webinarjam.com/r0wx01/register/6mn5myb7?webinar_id=3" target="_blank" rel="noopener noreferrer">Watch the webinar</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="step-card tone-3">
+                        <div class="step-number">03</div>
+                        <div class="step-main">
+                            <span class="step-kicker">Blogs</span>
+                            <h3>Read the blog that matches your question best</h3>
+                            <p>Choose the topic most relevant to your application stage. Each option opens directly in a new tab.</p>
+                            <div class="blog-links">
+                                <a class="blog-link" href="https://blueocean.education/blog/us-universities-from-india" target="_blank" rel="noopener noreferrer">US Admissions</a>
+                                <a class="blog-link" href="https://blueocean.education/blog/uk-universities-from-india" target="_blank" rel="noopener noreferrer">UK Admissions</a>
+                                <a class="blog-link" href="https://blueocean.education/blog/scholarships-indian-students" target="_blank" rel="noopener noreferrer">Scholarships</a>
+                                <a class="blog-link" href="https://blueocean.education/blog/study-abroad-consultants" target="_blank" rel="noopener noreferrer">Consultants</a>
+                                <a class="blog-link" href="https://blueocean.education/blog/college-application-essentials" target="_blank" rel="noopener noreferrer">College Applications</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="step-card tone-4">
+                        <div class="step-number">04</div>
+                        <div class="step-main">
+                            <span class="step-kicker">Community</span>
+                            <h3>Join the Blue Ocean WhatsApp community</h3>
+                            <p>Stay close to reminders, event announcements, and useful admissions updates from the Blue Ocean ecosystem.</p>
+                            <div class="step-actions">
+                                <a class="action-btn" href="https://tr.ee/NTG0oL-RSU" target="_blank" rel="noopener noreferrer">Join WhatsApp</a>
+                            </div>
+                        </div>
+                    </li>
+
+                    <li class="step-card tone-5">
+                        <div class="step-number">05</div>
+                        <div class="step-main">
+                            <span class="step-kicker">Instagram</span>
+                            <h3>Follow Blue Ocean on Instagram</h3>
+                            <p>See student outcomes, scholarship updates, short admissions explainers, and guidance from the Blue Ocean counseling team.</p>
+                            <div class="step-actions">
+                                <a class="action-btn" href="https://www.instagram.com/blueocean.education/" target="_blank" rel="noopener noreferrer">Follow on Instagram</a>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+
+                <p class="foot-note">Blue Ocean Education is not affiliated with, endorsed by, or associated with any university or institution referenced on this page.</p>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        const SHEET_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbxzYB2CtlMlPP0H9zCeEJAElhuSRWnF5RdyiL75JH_G2PcOn7ExTbxdc6kDev63ssMo8w/exec';
+        const NEWSLETTER_URL = 'https://www.blueocean.education/blank-2';
+        const newsletterForm = document.getElementById('newsletterForm');
+        const newsletterFirstName = document.getElementById('newsletterFirstName');
+        const newsletterEmail = document.getElementById('newsletterEmail');
+        const newsletterSubmit = document.getElementById('newsletterSubmit');
+        const newsletterStatus = document.getElementById('newsletterStatus');
+
+        function isSheetWebhookConfigured() {
+            return SHEET_WEBHOOK_URL && !SHEET_WEBHOOK_URL.includes('PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE');
+        }
+
+        function getStoredLead() {
+            try {
+                const rawLead = sessionStorage.getItem('blueOceanLead');
+                return rawLead ? JSON.parse(rawLead) : null;
+            } catch (error) {
+                console.warn('Unable to read saved lead details:', error);
+                return null;
+            }
+        }
+
+        function setNewsletterState(isSubmitting, message, tone) {
+            newsletterSubmit.disabled = isSubmitting;
+            newsletterSubmit.textContent = isSubmitting ? 'Subscribing...' : 'Subscribe';
+            newsletterSubmit.style.opacity = isSubmitting ? '0.82' : '1';
+
+            if (message) {
+                newsletterStatus.textContent = message;
+                newsletterStatus.classList.remove('ok', 'error');
+                if (tone) newsletterStatus.classList.add(tone);
+            }
+        }
+
+        async function postNewsletterLead(firstName, email, lead) {
+            if (!isSheetWebhookConfigured()) return;
+
+            const payload = {
+                timestamp: new Date().toISOString(),
+                form_source: 'newsletter_next_steps',
+                user_type: lead?.user_type || '',
+                first_name: firstName,
+                last_name: lead?.last_name || '',
+                email,
+                phone: lead?.phone || '',
+                grade: lead?.grade || '',
+                school_name: lead?.school_name || '',
+                financial_aid: lead?.financial_aid || '',
+                page_url: window.location.href,
+                page_title: document.title
+            };
+
+            const body = new URLSearchParams();
+            Object.entries(payload).forEach(([key, value]) => body.append(key, value ?? ''));
+
+            await fetch(SHEET_WEBHOOK_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                keepalive: true,
+                body
+            });
+        }
+
+        const savedLead = getStoredLead();
+        const title = document.getElementById('nextStepsTitle');
+        const copy = document.getElementById('nextStepsCopy');
+        const statusHeadline = document.getElementById('statusHeadline');
+
+        if (savedLead?.first_name) {
+            title.textContent = `${savedLead.first_name}, here are your next steps.`;
+            copy.textContent = 'We have received your details. While our team reviews your profile, these are the five most useful next actions to take right now.';
+            statusHeadline.textContent = `${savedLead.first_name}, a Blue Ocean advisor will review your form within 24 hours.`;
+        }
+
+        if (savedLead?.email) {
+            newsletterEmail.value = savedLead.email;
+        }
+
+        if (savedLead?.first_name) {
+            newsletterFirstName.value = savedLead.first_name;
+        }
+
+        newsletterForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
+
+            const firstName = newsletterFirstName.value.trim();
+            const email = newsletterEmail.value.trim();
+            if (!firstName) {
+                setNewsletterState(false, 'Please enter your first name to subscribe.', 'error');
+                return;
+            }
+            if (!email || !email.includes('@')) {
+                setNewsletterState(false, 'Please enter a valid email address to subscribe.', 'error');
+                return;
+            }
+
+            const newsletterWindow = window.open(NEWSLETTER_URL, '_blank', 'noopener,noreferrer');
+            setNewsletterState(true, 'Opening the newsletter page in a new tab...', null);
+
+            try {
+                await postNewsletterLead(firstName, email, savedLead);
+                if (!newsletterWindow) {
+                    setNewsletterState(false, 'Please allow pop-ups for this site so the newsletter page can open in a new tab.', 'error');
+                    return;
+                }
+                setNewsletterState(false, 'Subscribed. The newsletter page has opened in a new tab.', 'ok');
+            } catch (error) {
+                console.error('Newsletter signup capture failed:', error);
+                if (!newsletterWindow) {
+                    setNewsletterState(false, 'We could not open the newsletter page automatically. Please allow pop-ups and try again.', 'error');
+                    return;
+                }
+                setNewsletterState(false, 'The newsletter page has opened in a new tab. We could not save the email locally, but you can still continue there.', 'ok');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1407,11 +1407,12 @@ async function postLeadToSheet(payload) {
     await fetch(SHEET_WEBHOOK_URL, {
         method: 'POST',
         mode: 'no-cors',
+        keepalive: true,
         body
     });
 }
 
-async function submitLead(prefix, formSource, formId, stepId, successId) {
+async function submitLead(prefix, formSource, formId) {
     const payload = getLeadPayload(prefix, formSource);
     if (!validateLeadPayload(payload)) return;
 
@@ -1419,8 +1420,12 @@ async function submitLead(prefix, formSource, formId, stepId, successId) {
 
     try {
         await postLeadToSheet(payload);
-        document.getElementById(stepId).classList.remove('active');
-        document.getElementById(successId).classList.add('show');
+        try {
+            sessionStorage.setItem('blueOceanLead', JSON.stringify(payload));
+        } catch (storageError) {
+            console.warn('Unable to persist lead details for next-steps page:', storageError);
+        }
+        window.location.href = 'next-steps.html';
     } catch (error) {
         console.error('Lead submission failed:', error);
         if (!isSheetWebhookConfigured()) {
@@ -1444,7 +1449,7 @@ function hNext() {
 }
 function hPrev() { document.getElementById('h2').classList.remove('active'); document.getElementById('h1').classList.add('active'); }
 async function hSub() {
-    await submitLead('h', 'hero', 'hf', 'h2', 'hf-ok');
+    await submitLead('h', 'hero', 'hf');
 }
 
 /* ── BOTTOM FORM ── */
@@ -1458,7 +1463,7 @@ function bNext() {
 }
 function bPrev() { document.getElementById('b2').classList.remove('active'); document.getElementById('b1').classList.add('active'); }
 async function bSub() {
-    await submitLead('b', 'consultation', 'bf', 'b2', 'bf-ok');
+    await submitLead('b', 'consultation', 'bf');
 }
 
 /* ── CARDS SCROLL ── */
