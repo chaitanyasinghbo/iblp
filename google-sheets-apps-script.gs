@@ -20,7 +20,9 @@
 const LEADS_SHEET_NAME = 'Leads';
 const NEWSLETTER_SHEET_NAME = 'Newsletter';
 
-const LEAD_HEADERS = [
+// Fields that always appear first, in this order.
+// Any extra fields sent by a page are appended as new columns automatically.
+const BASE_LEAD_HEADERS = [
   'timestamp',
   'form_source',
   'user_type',
@@ -28,8 +30,10 @@ const LEAD_HEADERS = [
   'last_name',
   'email',
   'phone',
+  'is_ib_student',
   'grade',
   'school_name',
+  'pincode',
   'financial_aid',
   'page_url',
   'page_title'
@@ -81,8 +85,25 @@ function isNewsletterSubmission_(params) {
 
 function appendLead_(params) {
   const sheet = getOrCreateSheet_(LEADS_SHEET_NAME);
-  ensureHeaders_(sheet, LEAD_HEADERS);
-  const row = LEAD_HEADERS.map((header) => params[header] || '');
+
+  // Seed the header row with base columns if the sheet is empty.
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(BASE_LEAD_HEADERS);
+  }
+
+  // Read current headers and extend with any new keys from this submission.
+  const lastCol = sheet.getLastColumn();
+  const headers = sheet.getRange(1, 1, 1, lastCol).getValues()[0];
+
+  const newKeys = Object.keys(params).filter(k => !headers.includes(k));
+  if (newKeys.length > 0) {
+    newKeys.forEach((key, i) => {
+      sheet.getRange(1, lastCol + i + 1).setValue(key);
+    });
+    headers.push(...newKeys);
+  }
+
+  const row = headers.map(h => params[h] !== undefined ? params[h] : '');
   sheet.appendRow(row);
 }
 
