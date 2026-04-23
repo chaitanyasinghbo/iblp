@@ -938,6 +938,13 @@
                 <div class="fg"><label class="fl">First Name</label><input class="fi" id="h-fn" placeholder="Arjun"></div>
                 <div class="fg"><label class="fl">Last Name</label><input class="fi" id="h-ln" placeholder="Sharma"></div>
                 <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" id="h-em" placeholder="arjun@gmail.com"></div>
+                <div class="fg">
+                    <label class="fl">Are you (or your child) currently enrolled in the IB programme?</label>
+                    <div class="tog" id="h-ib" data-value="">
+                        <button class="tog-btn" onclick="togYN(this,'yes','h-ib')">Yes</button>
+                        <button class="tog-btn" onclick="togYN(this,'no','h-ib')">No</button>
+                    </div>
+                </div>
                 <button class="btn-p" onclick="hNext()">Continue →</button>
                 <div class="dots"><div class="dot on"></div><div class="dot"></div></div>
             </div>
@@ -965,6 +972,7 @@
                     </select>
                 </div>
                 <div class="fg"><label class="fl">School Name</label><input class="fi" id="h-sc" placeholder="Full name of your school"></div>
+                <div class="fg"><label class="fl">Residence Pincode <span style="font-weight:400;color:var(--mid)">(for consultation timing)</span></label><input class="fi" id="h-pc" placeholder="400001" maxlength="6" inputmode="numeric"></div>
                 <div class="fg">
                     <label class="fl">Scholarship funding needed to cover your child's tuition fees abroad</label>
                     <select class="fi" id="h-sf">
@@ -1275,6 +1283,13 @@
                     <div class="fg"><label class="fl">First Name</label><input class="fi" id="b-fn" placeholder="Arjun"></div>
                     <div class="fg"><label class="fl">Last Name</label><input class="fi" id="b-ln" placeholder="Sharma"></div>
                     <div class="fg"><label class="fl">Email Address</label><input class="fi" type="email" id="b-em" placeholder="arjun@gmail.com"></div>
+                    <div class="fg">
+                        <label class="fl">Are you (or your child) currently enrolled in the IB programme?</label>
+                        <div class="tog" id="b-ib" data-value="">
+                            <button class="tog-btn" onclick="togYN(this,'yes','b-ib')">Yes</button>
+                            <button class="tog-btn" onclick="togYN(this,'no','b-ib')">No</button>
+                        </div>
+                    </div>
                     <button class="btn-p" onclick="bNext()">Continue →</button>
                     <div class="dots"><div class="dot on"></div><div class="dot"></div></div>
                 </div>
@@ -1302,6 +1317,7 @@
                         </select>
                     </div>
                     <div class="fg"><label class="fl">School Name</label><input class="fi" id="b-sc" placeholder="Full name of your school"></div>
+                    <div class="fg"><label class="fl">Residence Pincode <span style="font-weight:400;color:var(--mid)">(for consultation timing)</span></label><input class="fi" id="b-pc" placeholder="400001" maxlength="6" inputmode="numeric"></div>
                     <div class="fg">
                         <label class="fl">Scholarship funding needed to cover your child's tuition fees abroad</label>
                         <select class="fi" id="b-sf">
@@ -1363,6 +1379,17 @@ function tog(btn, type, prefix) {
     btn.textContent = (type === 'student' ? 'Student' : 'Guardian') + ' ✓';
 }
 
+function togYN(btn, val, groupId) {
+    const group = document.getElementById(groupId);
+    group.dataset.value = val;
+    group.querySelectorAll('.tog-btn').forEach(b => {
+        b.classList.remove('on');
+        b.textContent = b.textContent.replace(' ✓', '');
+    });
+    btn.classList.add('on');
+    btn.textContent = (val === 'yes' ? 'Yes' : 'No') + ' ✓';
+}
+
 function isSheetWebhookConfigured() {
     return SHEET_WEBHOOK_URL && !SHEET_WEBHOOK_URL.includes('PASTE_GOOGLE_APPS_SCRIPT_WEB_APP_URL_HERE');
 }
@@ -1383,8 +1410,10 @@ function getLeadPayload(prefix, formSource) {
         last_name: document.getElementById(`${prefix}-ln`).value.trim(),
         email: document.getElementById(`${prefix}-em`).value.trim(),
         phone: phone ? `+91 ${phone}` : '',
+        is_ib_student: document.getElementById(`${prefix}-ib`)?.dataset.value || '',
         grade: document.getElementById(`${prefix}-gr`).value,
         school_name: document.getElementById(`${prefix}-sc`).value.trim(),
+        pincode: document.getElementById(`${prefix}-pc`)?.value.trim() || '',
         financial_aid: document.getElementById(`${prefix}-sf`).value,
         page_url: window.location.href,
         page_title: document.title
